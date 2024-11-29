@@ -31,7 +31,7 @@ export default function Movies() {
                                         href={`/movie/${featuredMovie.id}`}
                                         className="inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-blue-500 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400"
                                     >
-                                        View Details
+                                        View Details!
                                     </a>
                                 </div>
                             </div>
