@@ -1,9 +1,9 @@
-import DangerButton from '@/Components/DangerButton';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import Modal from '@/Components/Modal';
-import SecondaryButton from '@/Components/SecondaryButton';
-import TextInput from '@/Components/TextInput';
+import DangerButton from '@/Components/laravel-defaults/DangerButton';
+import InputError from '@/Components/laravel-defaults/InputError';
+import InputLabel from '@/Components/laravel-defaults/InputLabel';
+import Modal from '@/Components/laravel-defaults/Modal';
+import SecondaryButton from '@/Components/laravel-defaults/SecondaryButton';
+import TextInput from '@/Components/laravel-defaults/TextInput';
 import {useForm} from '@inertiajs/react';
 import {FormEventHandler, useRef, useState} from 'react';
 

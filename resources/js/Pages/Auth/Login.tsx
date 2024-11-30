@@ -1,9 +1,9 @@
-import Checkbox from '@/Components/Checkbox';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
+import Checkbox from '@/Components/laravel-defaults/Checkbox';
+import InputError from '@/Components/laravel-defaults/InputError';
+import InputLabel from '@/Components/laravel-defaults/InputLabel';
+import PrimaryButton from '@/Components/laravel-defaults/PrimaryButton';
+import TextInput from '@/Components/laravel-defaults/TextInput';
+import GuestLayout from '@/Components/laravel-defaults/Layouts/GuestLayout';
 import {Head, Link, useForm} from '@inertiajs/react';
 import {FormEventHandler} from 'react';
 

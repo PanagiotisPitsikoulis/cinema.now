@@ -1,9 +1,9 @@
 import {PageProps} from "@/types";
-import PageContainer from "@/Components/PageContainer";
+import Layout from "@/Layouts/Layout";
 
 export default function Welcome({auth,}: PageProps<{ laravelVersion: string; phpVersion: string }>) {
     return (
-        <PageContainer>
+        <Layout>
             {/* Hero */}
             <section className="overflow-hidden sm:grid sm:grid-cols-2">
                 <div className="p-8 md:p-12 lg:px-16 lg:py-24">
@@ -133,6 +133,6 @@ export default function Welcome({auth,}: PageProps<{ laravelVersion: string; php
                     </div>
                 </div>
             </section>
-        </PageContainer>
+        </Layout>
     );
 }

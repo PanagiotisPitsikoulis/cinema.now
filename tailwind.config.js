@@ -1,10 +1,12 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 
+const {nextui} = require("@nextui-org/react");
+
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: false,
     content: [
+        "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
@@ -18,8 +20,10 @@ export default {
             },
         },
     },
+    darkMode: "media",
 
     plugins: [
         forms,
+        nextui()
     ],
 };

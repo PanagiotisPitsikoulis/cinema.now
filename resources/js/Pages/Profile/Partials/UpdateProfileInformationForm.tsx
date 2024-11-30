@@ -1,7 +1,7 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import InputError from '@/Components/laravel-defaults/InputError';
+import InputLabel from '@/Components/laravel-defaults/InputLabel';
+import PrimaryButton from '@/Components/laravel-defaults/PrimaryButton';
+import TextInput from '@/Components/laravel-defaults/TextInput';
 import {Transition} from '@headlessui/react';
 import {Link, useForm, usePage} from '@inertiajs/react';
 import {FormEventHandler} from 'react';

@@ -1,7 +1,7 @@
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import Dropdown from '@/Components/Dropdown';
-import NavLink from '@/Components/NavLink';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import ApplicationLogo from '@/Components/laravel-defaults/ApplicationLogo';
+import Dropdown from '@/Components/laravel-defaults/Dropdown';
+import NavLink from '@/Components/laravel-defaults/NavLink';
+import ResponsiveNavLink from '@/Components/laravel-defaults/ResponsiveNavLink';
 import {Link, usePage} from '@inertiajs/react';
 import {PropsWithChildren, ReactNode, useState} from 'react';
 
@@ -21,7 +21,7 @@ export default function Authenticated({
                     <div className="flex h-16 justify-between">
                         <div className="flex">
                             <div className="flex shrink-0 items-center">
-                                <Link href="/">
+                                <Link href="/public">
                                     <ApplicationLogo
                                         className="block h-6 w-auto stroke-2 text-gray-800 dark:text-gray-200"/>
                                 </Link>
