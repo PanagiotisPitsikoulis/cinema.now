@@ -30,7 +30,7 @@ export function generateDashboardMoviesPageProps({
         fetchItems: fetchMovies,
     });
 
-    // Movie table columns
+    // Movie data-table columns
     const movieColumns = useMemo(
         () => [
             {key: "id", label: "ID"},

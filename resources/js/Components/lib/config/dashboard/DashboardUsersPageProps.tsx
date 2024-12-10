@@ -30,7 +30,7 @@ export function generateDashboardUsersPageProps({
         fetchItems: fetchUsers,
     });
 
-    // User table columns
+    // User data-table columns
     const userColumns = useMemo(
         () => [
             {key: "id", label: "ID"},
@@ -117,7 +117,7 @@ export function generateDashboardUsersPageProps({
         },
     };
 
-    // User table
+    // User data-table
     const table = {
         columns: userColumns,
         data: displayedUsers,
@@ -135,7 +135,7 @@ export function generateDashboardUsersPageProps({
         }
     };
 
-    // User table props
+    // User data-table props
     const tableProps = {
         selectedKeys: selectedId ? new Set([selectedId.toString()]) : new Set(),
         onSelectionChange: handleSelectionChange as any,

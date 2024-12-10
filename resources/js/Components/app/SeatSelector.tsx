@@ -1,7 +1,6 @@
 import React, {Dispatch, SetStateAction, useCallback, useMemo} from "react";
 import {Avatar, Card, CardBody, Chip} from "@nextui-org/react";
-//@ts-ignore
-import {Table} from "@/Components/lib/ui/Table";
+import {Table} from "@/Components/lib/ui/data-table";
 import {SeatGroup} from "@/Components/app/SeatGroup";
 import {getAvatarUrl} from "@/Components/utils";
 import {Reservation} from "@/types/types";

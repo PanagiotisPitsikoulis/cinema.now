@@ -36,7 +36,7 @@ export function generateDashboardReservationsPageProps({
         fetchItems: fetchReservations,
     });
 
-    // Reservation table columns
+    // Reservation data-table columns
     const reservationColumns = useMemo(
         () => [
             {key: "id", label: "ID"},
@@ -114,7 +114,7 @@ export function generateDashboardReservationsPageProps({
         },
     };
 
-    // Reservation table
+    // Reservation data-table
     const table = {
         columns: reservationColumns,
         data: displayedReservations,
@@ -134,7 +134,7 @@ export function generateDashboardReservationsPageProps({
         }
     };
 
-    // Reservation table props
+    // Reservation data-table props
     const tableProps = {
         selectedKeys: selectedId ? new Set([selectedId.toString()]) : new Set(),
         onSelectionChange: handleSelectionChange as any,

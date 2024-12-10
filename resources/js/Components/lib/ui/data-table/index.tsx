@@ -57,13 +57,13 @@ export type TableTopContentProps = {
 }
 
 /**
- * Table component for the table.
+ * Table component for the data-table.
  * @param tableTopContentProps - Props for the TableTopContent component.
- * @param ariaLabel - The aria label for the table.
- * @param columns - The columns for the table.
- * @param data - The data for the table.
+ * @param ariaLabel - The aria label for the data-table.
+ * @param columns - The columns for the data-table.
+ * @param data - The data for the data-table.
  * @param tableBodyProps - Props for the TableBody component.
- * @param renderCell - The render cell function for the table.
+ * @param renderCell - The render cell function for the data-table.
  * @param tableRowProps - Props for the TableRow component.
  * @param tableProps - Props for the Table component.
  * @param paginationProps - Props for the Pagination component.
@@ -120,7 +120,7 @@ export function Table<T>({
     // Handle page change
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
-        const tableContainer = document.getElementById("table-container");
+        const tableContainer = document.getElementById("data-table-container");
         if (tableContainer) {
             tableContainer.scrollIntoView();
         }
@@ -201,14 +201,14 @@ export function Table<T>({
 }
 
 /**
- * TableTopContent component for the table top content.
- * @param filterValue - The filter value for the table.
- * @param onClearSearch - The on clear search function for the table.
- * @param onSearchChange - The on search change function for the table.
- * @param visibleColumns - The visible columns for the table.
- * @param setVisibleColumns - The set visible columns function for the table.
- * @param text - The text for the table.
- * @param columns - The columns for the table.
+ * TableTopContent component for the data-table top content.
+ * @param filterValue - The filter value for the data-table.
+ * @param onClearSearch - The on clear search function for the data-table.
+ * @param onSearchChange - The on search change function for the data-table.
+ * @param visibleColumns - The visible columns for the data-table.
+ * @param setVisibleColumns - The set visible columns function for the data-table.
+ * @param text - The text for the data-table.
+ * @param columns - The columns for the data-table.
  * @returns JSX.Element
  */
 export function TableTopContent({

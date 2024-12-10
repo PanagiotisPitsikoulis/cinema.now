@@ -4,7 +4,7 @@ import {Button, ButtonGroup, Chip} from "@nextui-org/react";
 import {Trash} from "lucide-react";
 import {LinkIcon} from "@nextui-org/shared-icons";
 //@ts-ignore
-import {TableProps} from "@/Components/lib/ui/table";
+import {TableProps} from "../ui/data-table";
 import {LandingTextProps} from "@/Components/lib/ui/landing/LandingText";
 import {Key} from "react";
 
@@ -40,9 +40,9 @@ export function generateReservationsPageProps(
      * Generate props for the Table component.
      * The tableProps object contains the props for the Table component, including the tableTopContentProps, columns, data, renderCell, and itemsPerPage.
      * The tableTopContentProps object contains the props for the TableTopContent component, including text and filterValue.
-     * The columns array contains the column definitions for the table, including key and label.
-     * The data array contains the data to be displayed in the table.
-     * The renderCell function is used to render the content of each cell in the table.
+     * The columns array contains the column definitions for the data-table, including key and label.
+     * The data array contains the data to be displayed in the data-table.
+     * The renderCell function is used to render the content of each cell in the data-table.
      * The itemsPerPage property specifies the number of items to display per page.
      */
     const tableProps: TableProps<ExtendedReservation> = {

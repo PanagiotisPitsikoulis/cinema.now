@@ -3,7 +3,7 @@ import {SidebarComposed} from "@/Components/lib/composed/SidebarComposed";
 import {LandingText} from "@/Components/lib/ui/landing/LandingText";
 import {Form} from "@/Components/lib/ui/form";
 //@ts-ignore
-import {Column, Table} from "@/Components/lib/ui/table";
+import {Column, Table} from "../ui/data-table";
 import {Button, Spacer} from "@nextui-org/react";
 import {ArrowRightIcon, TrashIcon} from "lucide-react";
 import {PageProps, User} from "@/types";
@@ -68,7 +68,7 @@ export type DashboardPageProps<T extends { id: number; name?: string }> = PagePr
  * @param text - Text props for the sidebar.
  * @param createForm - Form props for the create form.
  * @param editForm - Form props for the edit form.
- * @param table - Table props for the table.
+ * @param table - Table props for the data-table.
  * @param pagination - Pagination props for the pagination.
  * @param onDeleteItem - Callback function for when an item is deleted.
  * @param setSelectedId - Callback function to set the selected item ID.
