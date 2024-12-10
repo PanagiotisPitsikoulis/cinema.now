@@ -36,6 +36,15 @@ function useCarousel() {
     return context;
 }
 
+/**
+ * Carousel component for the carousel.
+ * @param orientation - The orientation of the carousel.
+ * @param opts - The options for the carousel.
+ * @param setApi - The setApi function for the carousel.
+ * @param plugins - The plugins for the carousel.
+ * @param children - The children for the carousel.
+ * @returns JSX.Element
+ */
 const Carousel = React.forwardRef<
     HTMLDivElement,
     React.HTMLAttributes<HTMLDivElement> & CarouselProps
@@ -120,6 +129,11 @@ const Carousel = React.forwardRef<
 );
 Carousel.displayName = "Carousel";
 
+/**
+ * CarouselContent component for the carousel content.
+ * @param className - Additional class for the content.
+ * @returns JSX.Element
+ */
 const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
     ({className, ...props}, ref) => {
         const {carouselRef} = useCarousel();
@@ -132,6 +146,11 @@ const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
 );
 CarouselContent.displayName = "CarouselContent";
 
+/**
+ * CarouselItem component for the carousel item.
+ * @param className - Additional class for the item.
+ * @returns JSX.Element
+ */
 const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
     ({className, ...props}, ref) => {
         const {orientation} = useCarousel();
@@ -150,6 +169,11 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 );
 CarouselItem.displayName = "CarouselItem";
 
+/**
+ * CarouselPrevious component for the carousel previous button.
+ * @param className - Additional class for the previous button.
+ * @returns JSX.Element
+ */
 const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.HTMLAttributes<HTMLButtonElement>>(
     ({className, ...props}, ref) => {
         const {scrollPrev, canScrollPrev} = useCarousel();
@@ -171,6 +195,11 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.HTMLAttribute
 );
 CarouselPrevious.displayName = "CarouselPrevious";
 
+/**
+ * CarouselNext component for the carousel next button.
+ * @param className - Additional class for the next button.
+ * @returns JSX.Element
+ */
 const CarouselNext = React.forwardRef<HTMLButtonElement, React.HTMLAttributes<HTMLButtonElement>>(
     ({className, ...props}, ref) => {
         const {scrollNext, canScrollNext} = useCarousel();

@@ -37,6 +37,10 @@ export type TopBannerProps = {
 /**
  * Banner component displaying localized announcements or call-to-action links,
  * with dynamic gradient backgrounds and scroll-based visibility control.
+ * @param pathsData - The data for the paths.
+ * @param pathName - The current path.
+ * @param classNames - The class names for the banner.
+ * @returns JSX.Element
  */
 export const TopBanner = ({pathsData, pathName, classNames}: TopBannerProps) => {
     // Find the content data for the current path

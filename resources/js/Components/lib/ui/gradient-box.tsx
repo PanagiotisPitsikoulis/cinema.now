@@ -51,6 +51,12 @@ export interface GradientBoxProps extends VariantProps<typeof styles> {
     className?: string;
 }
 
+/**
+ * GradientBox component for the gradient box.
+ * @param children - The children of the gradient box.
+ * @param className - Additional class for the gradient box.
+ * @returns JSX.Element
+ */
 export const GradientBox = forwardRef<HTMLDivElement, GradientBoxProps>(
     (props, ref) => {
         const {

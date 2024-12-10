@@ -8,11 +8,10 @@ import {
     CarouselPrevious,
 } from "@/Components/lib/ui/carousel";
 import React from "react";
-import Text from "@/Components/lib/ui/Text";
 import {cn} from "@/Components/utils";
 import {ButtonProps} from "@nextui-org/button";
 import {Link} from "@inertiajs/react";
-import {motion} from "motion/react"
+import {LandingText} from "@/Components/lib/ui/landing/LandingText";
 
 
 export type Item = {
@@ -71,43 +70,51 @@ export function FeaturedCarousel({items, buttonProps, link}: FeaturedCarouselPro
                 <section
                     className="relative rounded-xl w-full p-8 flex items-center justify-center md:p-12 lg:px-16 lg:py-24"
                 >
+                    {/*Image background*/}
                     <img
                         alt={currentItem.name}
                         src={currentItem.image_link}
                         className="h-full w-full object-cover absolute top-0 left-0 right-0 bottom-0 inset-0 z-0 rounded-xl overflow-clip"
                     />
+                    {/*Dark overlay*/}
                     <div
                         className="h-full w-full object-cover absolute top-0 left-0 right-0 bottom-0 inset-0 z-10 bg-black/40 backdrop-blur-3xl rounded-xl overflow-clip"
                     />
                     <div className="mx-auto max-w-xl z-20">
-                        {/* Dots only for multiple items */}
-                        {items.length > 1 && (
-                            <div className="flex flex-row gap-1 mb-4">
-                                {Array.from({length: count}).map((_, index) => (
-                                    <span
-                                        key={index}
-                                        className={cn(
-                                            "bg-white/50 size-2 rounded-full",
-                                            index === current && "bg-white"
-                                        )}
-                                    ></span>
-                                ))}
-                            </div>
-                        )}
-
-                        <Text
-                            classNames={{title: "text-white", subtitle: "text-white/80 mt-4"}}
-                            text={{title: currentItem.name, subtitle: currentItem.description}}
+                        <LandingText
+                            bottomContent={
+                                <Button
+                                    as={Link}
+                                    href={buttonHref}
+                                    className="rounded-full mt-8"
+                                    {...buttonProps}
+                                >
+                                    {buttonProps?.children || "Book Now"}
+                                </Button>
+                            }
+                            topContent={
+                                <>
+                                    {/* Dots only for multiple items */}
+                                    {items.length > 1 && (
+                                        <div className="flex flex-row gap-1 mb-4">
+                                            {Array.from({length: count}).map((_, index) => (
+                                                <span
+                                                    key={index}
+                                                    className={cn(
+                                                        "bg-white/50 size-2 rounded-full",
+                                                        index === current && "bg-white"
+                                                    )}
+                                                ></span>
+                                            ))}
+                                        </div>
+                                    )}</>
+                            }
+                            orientation={"left"}
+                            size={"sm"}
+                            classNames={{title: "text-white", subtitle: "text-white/80"}}
+                            title={currentItem.name}
+                            subtitle={currentItem.description.slice(0, 80) + "..."}
                         />
-
-                        <Button
-                            as={Link}
-                            href={buttonHref}
-                            className="rounded-full mt-8"
-                            {...buttonProps}
-                        >
-                            {buttonProps?.children || "Book Now"}
-                        </Button>
                     </div>
                 </section>
 
@@ -131,13 +138,13 @@ export function FeaturedCarousel({items, buttonProps, link}: FeaturedCarouselPro
                         <CarouselNext/>
                     </Carousel>
                 ) : (
-                    <motion.div layoutId={items[0].image_link} className="w-full lg:max-w-sm">
+                    <div className="w-full lg:max-w-sm">
                         <img
                             alt={items[0].name}
                             src={items[0].image_link}
                             className="h-full w-full object-cover rounded-xl"
                         />
-                    </motion.div>
+                    </div>
                 )}
             </div>
         </section>

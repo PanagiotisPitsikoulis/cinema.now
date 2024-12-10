@@ -4,6 +4,11 @@ const isBrowser = typeof window !== "undefined";
 
 export type ScrollValue = { x: number; y: number };
 
+/**
+ * A function to get the current scroll position of an element.
+ * @param element - The element to get the scroll position of.
+ * @returns The current scroll position of the element.
+ */
 function getScrollPosition(
     element: HTMLElement | undefined | null
 ): ScrollValue {
@@ -42,6 +47,11 @@ export interface UseScrollPositionOptions {
     }) => void;
 }
 
+/**
+ * A hook to track the scroll position of an element.
+ * @param props - The options for the hook.
+ * @returns The current scroll position of the element.
+ */
 export const useScrollPosition = (
     props: UseScrollPositionOptions
 ): ScrollValue => {

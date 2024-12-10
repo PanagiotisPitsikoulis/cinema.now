@@ -38,9 +38,11 @@ interface FeaturesGridProps {
     classNames?: SlotsToClasses<FeaturesGridSlots>;
 }
 
-/**
- * FeaturesGrid component for displaying a grid of feature cards.
- */
+/**FeaturesGrid component for displaying a grid of feature cards.
+ * @param features - Array of features to display in the grid.
+ * @param classNames - Custom class names for slots.
+ * @returns JSX.Element
+ * */
 export const FeaturesGrid: React.FC<FeaturesGridProps> = ({
                                                               features,
                                                               classNames,

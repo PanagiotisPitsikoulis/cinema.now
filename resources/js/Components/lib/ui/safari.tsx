@@ -7,6 +7,14 @@ export interface SafariProps extends SVGProps<SVGSVGElement> {
     height?: number;
 }
 
+/**
+ * Safari component for the Safari icon.
+ * @param src - The source URL for the Safari icon.
+ * @param url - The URL to open when the Safari icon is clicked.
+ * @param width - The width of the Safari icon.
+ * @param height - The height of the Safari icon.
+ * @returns JSX.Element
+ */
 export function Safari({
                            src,
                            url,

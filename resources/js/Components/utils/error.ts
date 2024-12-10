@@ -1,3 +1,10 @@
+/**
+ * Ensures that the given value is an Error instance.
+ * If it is already an Error, it is returned as-is.
+ * If it is not an Error, it is wrapped in a new Error instance.
+ * @param value - The value to check.
+ * @returns An Error instance.
+ */
 export function ensureError(value: unknown): Error {
     if (value instanceof Error) return value;
 
@@ -15,6 +22,12 @@ export function ensureError(value: unknown): Error {
 
 type Result<T> = { data: T | null; error: Error | null };
 
+/**
+ * Ensures that the given function returns a Promise that resolves to a Result object.
+ * If the function throws an error, it is wrapped in a new Error instance and returned as the error property of the Result object.
+ * @param asyncFunction - The function to wrap.
+ * @returns A function that returns a Promise that resolves to a Result object.
+ */
 export function withErrorHandling<T extends (...args: any[]) => Promise<any>>(
     asyncFunction: T
 ) {
@@ -31,6 +44,12 @@ export function withErrorHandling<T extends (...args: any[]) => Promise<any>>(
     };
 }
 
+/**
+ * Ensures that the given Promise resolves to a Result object.
+ * If the Promise rejects, it is wrapped in a new Error instance and returned as the error property of the Result object.
+ * @param method - The Promise to wrap.
+ * @returns A Promise that resolves to a Result object.
+ */
 export async function withMethodErrorHandling<T>(
     method: Promise<T>
 ): Promise<Result<T>> {

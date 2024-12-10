@@ -1,7 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
 
 const {nextui} = require("@nextui-org/react");
+const animate = require("tailwindcss-animate");
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -18,12 +18,11 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
-        },
+        }
     },
-    darkMode: "media",
-
+    darkMode: "class",
     plugins: [
-        forms,
+        animate,
         nextui()
     ],
 };

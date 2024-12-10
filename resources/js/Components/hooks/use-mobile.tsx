@@ -2,6 +2,10 @@ import * as React from "react";
 
 const MOBILE_BREAKPOINT = 1024;
 
+/**
+ * A hook to check if the window width is less than the mobile breakpoint.
+ * @returns A boolean indicating whether the window width is less than the mobile breakpoint.
+ */
 export function useIsMobile() {
     const [isMobile, setIsMobile] = React.useState<boolean | undefined>(
         undefined

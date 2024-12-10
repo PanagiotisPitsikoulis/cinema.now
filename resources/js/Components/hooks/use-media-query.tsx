@@ -1,5 +1,10 @@
 import {useCallback, useEffect, useState} from "react";
 
+/**
+ * A hook to check if the window width matches a given width.
+ * @param width - The width to check.
+ * @returns A boolean indicating whether the window width matches the given width.
+ */
 export const useMediaQuery = (width: number): boolean => {
     const [targetReached, setTargetReached] = useState(false);
 

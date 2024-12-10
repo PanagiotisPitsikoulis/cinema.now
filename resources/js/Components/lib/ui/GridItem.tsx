@@ -1,7 +1,6 @@
 import {Button, Card, CardFooter, CardHeader, Image} from "@nextui-org/react";
 import React from "react";
 import {Link} from "@inertiajs/react";
-import {motion} from "motion/react"
 
 
 export interface CardData {
@@ -43,15 +42,12 @@ export function GridItem(props: CardData) {
                     {header.title}
                 </h4>
             </CardHeader>
-            <motion.div layoutId={image}>
-                <Image
-                    removeWrapper
-                    alt={header.title}
-                    className="z-0 w-full h-full object-cover"
-                    src={image}
-                />
-            </motion.div>
-
+            <Image
+                removeWrapper
+                alt={header.title}
+                className="z-0 w-full h-full object-cover"
+                src={image}
+            />
             <CardFooter
                 className="absolute bg-black/40 bottom-0 z-10"
             >

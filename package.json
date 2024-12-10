@@ -6,40 +6,47 @@
         "dev": "concurrently \"npm:dev:vite\" \"npm:dev:artisan\" \"npm:dev:logs\"",
         "dev:vite": "vite --host",
         "dev:artisan": "php artisan serve",
-        "dev:logs": "php artisan tail --level=debug",
+        "dev:logs": "tail -f storage/logs/laravel.log",
         "clear": "rm -rf node_modules vendor bun.lockb cache && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear",
         "update": "bun update && composer update"
     },
     "devDependencies": {
-        "@headlessui/react": "^2.0.0",
-        "@inertiajs/react": "^1.0.0",
-        "@tailwindcss/forms": "^0.5.3",
-        "@types/node": "^18.13.0",
-        "@types/react": "^18.0.28",
-        "@types/react-dom": "^18.0.10",
-        "@vitejs/plugin-react": "^4.2.0",
-        "autoprefixer": "^10.4.12",
-        "axios": "^1.7.4",
-        "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.31",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "tailwindcss": "^3.2.1",
-        "typescript": "^5.0.2",
-        "vite": "^5.0"
-    },
-    "overrides": {
-        "@types/react": "npm:types-react@rc",
-        "@types/react-dom": "npm:types-react-dom@rc"
+        "@headlessui/react": "^2.2.0",
+        "@inertiajs/react": "^1.2.0",
+        "@tailwindcss/forms": "^0.5.9",
+        "@types/node": "^18.19.67",
+        "@types/react": "^19.0.1",
+        "@types/react-dom": "^19.0.1",
+        "@vitejs/plugin-react": "^4.3.4",
+        "autoprefixer": "^10.4.20",
+        "axios": "^1.7.9",
+        "concurrently": "^9.1.0",
+        "laravel-vite-plugin": "^1.1.1",
+        "postcss": "^8.4.49",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "tailwindcss": "^3.4.16",
+        "typescript": "^5.7.2",
+        "vite": "^5.4.11"
     },
     "dependencies": {
-        "@nextui-org/react": "^2.4.8",
+        "@inertiajs/inertia": "^0.11.1",
+        "@nextui-org/react": "^2.6.3",
+        "@radix-ui/react-aspect-ratio": "^1.1.0",
+        "@radix-ui/react-dialog": "^1.1.2",
+        "@radix-ui/react-slot": "^1.1.0",
+        "class-variance-authority": "^0.7.1",
         "embla-carousel-react": "^8.5.1",
-        "framer-motion": "^11.12.0",
+        "framer-motion": "^11.13.1",
         "lucide-react": "^0.462.0",
         "mitt": "^3.0.1",
         "motion": "12.0.0-alpha.2",
-        "react-hook-form": "^7.53.2"
+        "react-hook-form": "^7.54.0",
+        "recharts": "^2.14.1",
+        "sonner": "^1.7.1",
+        "tailwindcss-animate": "^1.0.7"
+    },
+    "overrides": {
+        "react-is": "^19.0.0-rc-69d4b800-20241021"
     }
 }

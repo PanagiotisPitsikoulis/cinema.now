@@ -10,7 +10,15 @@ export type PolymorphicButtonProps = {
     disableLoading?: boolean;
 } & ButtonProps;
 
-// PolymorphicButton automatically determines if it should render a button or a link
+/**
+ * PolymorphicButton component for rendering a button or a link.
+ * @param href - The URL for the button.
+ * @param func - The function to call when the button is clicked.
+ * @param isExternal - Whether the button is external.
+ * @param disableLoading - Whether to disable the loading state.
+ * @param buttonProps - Additional props for the button.
+ * @returns JSX.Element
+ */
 function PolymorphicButton({
                                href,
                                func,

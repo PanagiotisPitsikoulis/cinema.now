@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class DisplayTime extends Model
 {
@@ -21,5 +22,15 @@ class DisplayTime extends Model
     public function movie()
     {
         return $this->belongsTo(Movie::class, 'movie_id');
+    }
+
+    /**
+     * Get the reservations for the display time.
+     *
+     * @return HasMany
+     */
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'display_time_id');
     }
 }

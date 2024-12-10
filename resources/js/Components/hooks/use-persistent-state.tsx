@@ -8,7 +8,7 @@ function getCookie(name: string): string | null {
 }
 
 // Helper to set a cookie
-function setCookie(
+export function setCookie(
     name: string,
     value: string,
     maxAge: number = 31536000, // Default to 1 year
@@ -19,6 +19,13 @@ function setCookie(
     )}; path=${path}; max-age=${maxAge}`;
 }
 
+/**
+ * A hook to manage persistent state across page reloads.
+ * @param key - The key to use for the cookie.
+ * @param initialValue - The initial value to set.
+ * @param cookieMaxAge - The maximum age of the cookie in seconds.
+ * @returns The current state and a function to update the state.
+ */
 function usePersistentState<T>(
     key: string,
     initialValue: T extends Function ? never : T, // Exclude callable types

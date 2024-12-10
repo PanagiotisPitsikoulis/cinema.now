@@ -13,6 +13,13 @@ export type UserDropdownProps = {
     logout: () => void;
 }
 
+/**
+ * UserDropdown component for the user dropdown menu.
+ * @param user - The user object.
+ * @param text - The text for the dropdown menu.
+ * @param logout - The function to log out the user.
+ * @returns JSX.Element
+ */
 export function UserDropdown({
                                  text,
                                  user,
