@@ -2,8 +2,7 @@ import React, {Dispatch, SetStateAction, useCallback, useMemo} from "react";
 import {SidebarComposed} from "@/Components/lib/composed/SidebarComposed";
 import {LandingText} from "@/Components/lib/ui/landing/LandingText";
 import {Form} from "@/Components/lib/ui/form";
-//@ts-ignore
-import {Column, Table} from "@/Components/lib/ui/table";
+import {Column, Table} from "@/Components/lib/ui/data-table";
 import {Button, Spacer} from "@nextui-org/react";
 import {ArrowRightIcon, TrashIcon} from "lucide-react";
 import {PageProps, User} from "@/types";

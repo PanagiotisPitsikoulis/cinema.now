@@ -6,8 +6,7 @@ import {ExtendedReservation} from "@/types/types";
 import {Spacer} from "@nextui-org/react";
 import {LandingText} from "@/Components/lib/ui/landing/LandingText";
 import {generateReservationsPageProps} from "@/Components/lib/config/ReservationsPageProps";
-//@ts-ignore
-import {Table} from "@/Components/lib/ui/table";
+import {Table} from "@/Components/lib/ui/data-table";
 import {handleDeleteReservation} from "@/Components/lib/api/reservation";
 
 /**
