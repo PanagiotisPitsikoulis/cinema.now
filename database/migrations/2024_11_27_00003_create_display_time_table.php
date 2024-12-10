@@ -21,6 +21,6 @@ class CreateDisplayTimeTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('display_time');
+        Schema::dropIfExists('display_times');
     }
 }
