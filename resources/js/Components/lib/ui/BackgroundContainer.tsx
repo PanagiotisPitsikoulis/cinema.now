@@ -1,5 +1,5 @@
 import React from "react";
-import {cn} from "@/Components/utils";
+import { cn } from "@/Components/utils";
 
 export type BackgroundContainerProps = {
     children: React.ReactNode;
@@ -10,7 +10,7 @@ export type BackgroundContainerProps = {
         background?: string;
         content?: string;
     };
-}
+};
 
 /**
  * A container component that adds a background image to its children.
@@ -20,24 +20,36 @@ export type BackgroundContainerProps = {
  * @returns JSX.Element
  */
 function BackgroundContainer({
-                                 children,
-                                 background = "/svgs/bg-svg.svg",
-                                 className,
-                                 classNames = {},
-                             }: BackgroundContainerProps) {
+    children,
+    background = "/gradients/looper-pattern.svg",
+    className,
+    classNames = {},
+}: BackgroundContainerProps) {
     return (
-        <div className={cn("relative overflow-visible", className, classNames.container)}>
+        <div
+            className={cn(
+                "relative overflow-visible",
+                className,
+                classNames.container
+            )}
+        >
             {/* Dynamic Background */}
             <div
                 className={cn(
                     "absolute inset-0 pointer-events-none select-none bg-cover bg-center",
                     classNames.background
                 )}
-                style={background ? {backgroundImage: `url('${background}')`} : undefined}
+                style={
+                    background
+                        ? { backgroundImage: `url('${background}')` }
+                        : undefined
+                }
             ></div>
 
             {/* Children */}
-            <div className={cn("relative z-10", classNames.content)}>{children}</div>
+            <div className={cn("relative z-10", classNames.content)}>
+                {children}
+            </div>
         </div>
     );
 }

@@ -8,40 +8,34 @@ use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Home route
+// Public Routes
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'movies' => Movie::all(),
     ]);
-});
+})->name('home');
 
-// Profile routes
-Route::middleware('auth')->group(function () {
+// Private Routes (Protected)
+Route::middleware('auth.redirect')->group(function () {
+    // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-// Movies route
-Route::get('movies', function () {
-    return Inertia::render('Movies', [
-        'movies' => Movie::all(),
-    ]);
-});
+    // Movies Routes
+    Route::get('/movies', function () {
+        return Inertia::render('Movies', [
+            'movies' => Movie::all(),
+        ]);
+    })->name('movies.index');
+    Route::get('/movie/{id}', [MovieController::class, 'show'])->name('movies.show');
 
-// Movie route
-Route::middleware('auth')->group(function () {
-    Route::get('movie/{id}', [MovieController::class, 'show'])->name('movies.show');
-});
-
-// Reservation route
-Route::middleware('auth')->group(function () {
+    // Reservations Routes
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 });
 
-
-// Dashboard routes
-Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
+// Admin-Only Routes
+Route::prefix('dashboard')->middleware(['auth.redirect', 'verified'])->group(function () {
     Route::get('/', [DashboardController::class, 'home'])->name('dashboard.home');
     Route::get('/movies', [DashboardController::class, 'movies'])->name('dashboard.movies');
     Route::get('/display-times', [DashboardController::class, 'displayTimes'])->name('dashboard.display_times');
@@ -50,7 +44,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::get('/api', [DashboardController::class, 'api'])->name('dashboard.api');
 });
 
-
+// Additional Route Files
 require __DIR__ . '/api.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/dashboard-api.php';

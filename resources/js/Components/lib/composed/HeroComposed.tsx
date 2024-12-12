@@ -1,10 +1,10 @@
 import React from "react";
-import {AnimatedWrapper} from "@/Components/lib/ui/AnimatedWrapper";
-import {LandingText} from "@/Components/lib/ui/landing/LandingText";
-import {AnimatedImageGrid} from "@/Components/lib/ui/landing/AnimatedImageGrid";
-import {Button} from "@nextui-org/react";
-import {ArrowRightIcon} from "@nextui-org/shared-icons";
-import {Link} from "@inertiajs/react";
+import { AnimatedWrapper } from "@/Components/lib/ui/AnimatedWrapper";
+import { LandingText } from "@/Components/lib/ui/landing/LandingText";
+import { AnimatedImageGrid } from "@/Components/lib/ui/landing/AnimatedImageGrid";
+import { Button } from "@nextui-org/react";
+import { ArrowRightIcon } from "@nextui-org/shared-icons";
+import { Link } from "@inertiajs/react";
 
 export type HeroComposedProps = {
     title: string;
@@ -23,9 +23,15 @@ export type HeroComposedProps = {
  * @param ctaText - The text for the call-to-action button.
  * @returns JSX.Element
  */
-export const HeroComposed: React.FC<HeroComposedProps> = ({title, subtitle, images, ctaLink, ctaText}) => {
+export const HeroComposed: React.FC<HeroComposedProps> = ({
+    title,
+    subtitle,
+    images,
+    ctaLink,
+    ctaText,
+}) => {
     return (
-        <section className="flex items-center justify-between h-[calc(100vh-150px)] flex-col gap-20 overflow-hidden">
+        <section className="flex items-center justify-between h-[calc(100vh-150px)] max-lg:h-[50rem] flex-col gap-20 overflow-hidden">
             <AnimatedWrapper
                 className="flex items-center justify-start"
                 triggerOnView
@@ -42,7 +48,7 @@ export const HeroComposed: React.FC<HeroComposedProps> = ({title, subtitle, imag
                         <Button
                             as={Link}
                             href={ctaLink}
-                            endContent={<ArrowRightIcon/>}
+                            endContent={<ArrowRightIcon />}
                             size="lg"
                             color="primary"
                         >
@@ -51,7 +57,7 @@ export const HeroComposed: React.FC<HeroComposedProps> = ({title, subtitle, imag
                     }
                 />
             </AnimatedWrapper>
-            <AnimatedImageGrid images={images}/>
+            <AnimatedImageGrid images={images} />
         </section>
     );
 };
