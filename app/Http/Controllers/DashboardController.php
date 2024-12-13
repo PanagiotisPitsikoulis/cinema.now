@@ -128,8 +128,12 @@ class DashboardController extends Controller
     // API page
     public function api(Request $request): Response
     {
+        // Extract the Bearer token from the Authorization header
+        $authHeader = $request->header('Authorization');
+        $token = $authHeader ? str_replace('Bearer ', '', $authHeader) : null;
+
         return Inertia::render('Dashboard/Api', [
-            'api_headers' => $request->headers->all(),
+            'api_token' => $token,
             'user' => $request->user(),
         ]);
     }

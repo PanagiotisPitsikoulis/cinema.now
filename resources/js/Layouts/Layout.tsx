@@ -13,6 +13,7 @@ import { UserDropdown } from "@/Components/lib/ui/user-dropdown";
 import { cn } from "@/Components/utils";
 import PageContainer from "@/Components/lib/ui/landing/PageContainer";
 import { ThemeSwitch } from "@/Components/lib/ui/theme-switch";
+import { handleLogout } from "@/Components/lib/api/auth";
 
 /**
  * Layout component for the application.
@@ -102,7 +103,9 @@ export default function Layout({
                                     dashboard: "Dashboard",
                                     signedInAs: "Signed in As",
                                 }}
-                                logout={() => {}}
+                                logout={async () => {
+                                    await handleLogout();
+                                }}
                             />
                         ) : (
                             <>

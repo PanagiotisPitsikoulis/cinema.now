@@ -1,20 +1,27 @@
-import {LandingSectionProps} from "@/Components/lib/ui/landing/LandingSection";
-import {LandingTextProps} from "@/Components/lib/ui/landing/LandingText";
-import type {ExtendedDisplayTime, Movie} from "@/types/types";
-import React, {Dispatch, SetStateAction} from "react";
+import { LandingSectionProps } from "@/Components/lib/ui/landing/LandingSection";
+import { LandingTextProps } from "@/Components/lib/ui/landing/LandingText";
+import type { ExtendedDisplayTime, Movie } from "@/types/types";
+import React, { Dispatch, SetStateAction } from "react";
 import SeatSelector from "@/Components/app/SeatSelector";
-import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Spacer,} from "@nextui-org/react";
+import {
+    Button,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownTrigger,
+    Spacer,
+} from "@nextui-org/react";
 import useSeatData from "@/Components/app/useSeatData";
-import {FeaturedCarousel} from "@/Components/lib/ui/FeaturedCarousel";
-import {handlePostReservation} from "@/Components/lib/api/reservation";
-import {BackgroundContainerProps} from "@/Components/lib/ui/BackgroundContainer";
+import { FeaturedCarousel } from "@/Components/lib/ui/FeaturedCarousel";
+import { handlePostReservation } from "@/Components/lib/api/reservation";
+import { BackgroundContainerProps } from "@/Components/lib/ui/BackgroundContainer";
 
 export type MoviePageProps = {
     heroSectionProps: LandingSectionProps;
     seatSelectorProps: LandingSectionProps;
     submitSectionProps: LandingTextProps;
     backgroundContainerProps: Partial<BackgroundContainerProps>;
-}
+};
 
 /**
  * Generates component props for the Movie page.
@@ -40,7 +47,10 @@ export function generateMoviePageProps(
         orientation: "left",
         contentBottom: true,
         landingTextProps: {
-            classNames: {title: "lg:w-2/4", subtitle: "lg:w-[30rem] text-justify"},
+            classNames: {
+                title: "lg:w-2/4",
+                subtitle: "lg:w-[30rem] text-justify",
+            },
             title: `Book a Seat for the Movie: ${movie.name}`,
             subtitle:
                 "Choose one of the available display times and pick your desired seat, then press Book Now to reserve your seat.",
@@ -48,8 +58,8 @@ export function generateMoviePageProps(
         },
         content: (
             <FeaturedCarousel
-                buttonProps={{children: "All Movies"}}
-                link={{href: "/movies"}}
+                buttonProps={{ children: "All Movies" }}
+                link={{ href: "/movies" }}
                 items={[movie]}
             />
         ),
@@ -61,7 +71,10 @@ export function generateMoviePageProps(
         orientation: "left",
         contentBottom: true,
         landingTextProps: {
-            classNames: {title: "lg:w-[30rem]", subtitle: "lg:w-[30rem] text-justify"},
+            classNames: {
+                title: "lg:w-[30rem]",
+                subtitle: "lg:w-[30rem] text-justify",
+            },
             title: "Choose one of the available display times",
             subtitle:
                 "Select the time that suits you best in the dropdown menu. Then, select the seat you wish to reserve, either on the interactive seat selector, or on the list.",
@@ -72,14 +85,24 @@ export function generateMoviePageProps(
                 {displayTimes && (
                     <Dropdown>
                         <DropdownTrigger>
-                            <Button color={"primary"} size={"lg"} variant={"flat"}>
-                                {displayTimes.find((dt) => dt.id === selectedDisplayTime)?.time_start || "Select Time"}
+                            <Button
+                                color={"primary"}
+                                size={"lg"}
+                                variant={"flat"}
+                            >
+                                {displayTimes.find(
+                                    (dt) => dt.id === selectedDisplayTime
+                                )?.time_start || "Select Time"}
                             </Button>
                         </DropdownTrigger>
                         <DropdownMenu
                             color={"primary"}
-                            onAction={(key) => setSelectedDisplayTime(Number(key))}
-                            selectedKeys={[selectedDisplayTime?.toString() || ""]}
+                            onAction={(key) =>
+                                setSelectedDisplayTime(Number(key))
+                            }
+                            selectedKeys={[
+                                selectedDisplayTime?.toString() || "",
+                            ]}
                             selectionMode="single"
                         >
                             {displayTimes.map((time) => (
@@ -90,12 +113,16 @@ export function generateMoviePageProps(
                         </DropdownMenu>
                     </Dropdown>
                 )}
-                <Spacer y={4}/>
+                <Spacer y={4} />
                 <SeatSelector
                     key={selectedDisplayTime}
                     selectedSeat={selectedSeat}
                     setSelectedSeat={setSelectedSeat}
-                    seatData={useSeatData(displayTimes, selectedDisplayTime, movie.id)}
+                    seatData={useSeatData(
+                        displayTimes,
+                        selectedDisplayTime,
+                        movie.id
+                    )}
                 />
             </div>
         ),
@@ -103,18 +130,27 @@ export function generateMoviePageProps(
 
     // Generate component props for the Submit section
     const submitSectionProps: LandingTextProps = {
-        classNames: {title: "lg:w-[30rem]", subtitle: "lg:w-[30rem] text-justify"},
+        classNames: {
+            title: "lg:w-[30rem]",
+            subtitle: "lg:w-[30rem] text-justify",
+        },
         size: "sm",
         orientation: "left",
         bottomContent: (
             <section className="flex flex-col items-start mt-6">
-                <div className={"flex flex-row gap-2"}>
+                <div className={"flex flex-col gap-2"}>
                     <Button
                         color="primary"
                         size="lg"
                         className="w-fit"
                         isDisabled={!selectedSeat}
-                        onPress={() => handlePostReservation(movie, selectedDisplayTime, selectedSeat)}
+                        onPress={() =>
+                            handlePostReservation(
+                                movie,
+                                selectedDisplayTime,
+                                selectedSeat
+                            )
+                        }
                     >
                         Reserve your Seat
                     </Button>
@@ -132,16 +168,20 @@ export function generateMoviePageProps(
                 </small>
             </section>
         ),
-        title: selectedSeat ? `Press here to reserve seat: ${selectedSeat}` : "Select a seat to reserve",
+        title: selectedSeat
+            ? `Press here to reserve seat: ${selectedSeat}`
+            : "Select a seat to reserve",
         subtitle: `The display time you have selected is: ${
-            displayTimes?.find((dt) => dt.id === selectedDisplayTime)?.time_start
+            displayTimes?.find((dt) => dt.id === selectedDisplayTime)
+                ?.time_start
         }. Your reservation will appear in your reservations list in your profile, and you will be redirected there.`,
     };
 
     // Generate props for the BackgroundContainer component
     const backgroundContainerProps: Partial<BackgroundContainerProps> = {
         background: "/svgs/bg-svg.svg",
-        className: "h-[calc(100svh-theme(spacing.4))] lg:h-[calc(80svh-theme(spacing.8))]",
+        className:
+            "h-[calc(100svh-theme(spacing.4))] lg:h-[calc(80svh-theme(spacing.8))]",
     };
 
     return {
