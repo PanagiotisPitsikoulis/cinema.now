@@ -1,10 +1,10 @@
-import React, {Dispatch, SetStateAction, useCallback, useMemo} from "react";
-import {Avatar, Card, CardBody, Chip} from "@nextui-org/react";
-import {Table} from "@/Components/lib/ui/data-table";
-import {SeatGroup} from "@/Components/app/SeatGroup";
-import {getAvatarUrl} from "@/Components/utils";
-import {Reservation} from "@/types/types";
-import {getStatusColor} from "@/Components/lib/config/config";
+import React, { Dispatch, SetStateAction, useCallback, useMemo } from "react";
+import { Avatar, Card, CardBody, Chip } from "@nextui-org/react";
+import { Table } from "@/Components/lib/ui/data-table";
+import { SeatGroup } from "@/Components/app/SeatGroup";
+import { getAvatarUrl } from "@/Components/utils";
+import { Reservation } from "@/types/types";
+import { getStatusColor } from "@/Components/lib/config/config";
 
 /**
  * SeatSelector component for the SeatSelector page.
@@ -14,10 +14,10 @@ import {getStatusColor} from "@/Components/lib/config/config";
  * @constructor
  */
 export const SeatSelector = ({
-                                 selectedSeat,
-                                 setSelectedSeat,
-                                 seatData,
-                             }: {
+    selectedSeat,
+    setSelectedSeat,
+    seatData,
+}: {
     selectedSeat: string | null;
     setSelectedSeat: Dispatch<SetStateAction<string | null>>;
     seatData: Reservation[];
@@ -32,16 +32,17 @@ export const SeatSelector = ({
         };
     }, []);
 
-    const {seatGroup1Data, seatGroup2Data, seatGroup3Data, seatGroup4Data} = useMemo(
-        () => generateSeatGroupData(seatData),
-        [seatData, generateSeatGroupData]
-    );
+    const { seatGroup1Data, seatGroup2Data, seatGroup3Data, seatGroup4Data } =
+        useMemo(
+            () => generateSeatGroupData(seatData),
+            [seatData, generateSeatGroupData]
+        );
 
     const seatColumns = useMemo(
         () => [
-            {key: "id", label: "Seat ID"},
-            {key: "status", label: "Status"},
-            {key: "user", label: "User"},
+            { key: "id", label: "Seat ID" },
+            { key: "status", label: "Status" },
+            { key: "user", label: "User" },
         ],
         []
     );
@@ -49,7 +50,9 @@ export const SeatSelector = ({
     const handleSelectionChange = useCallback(
         (data: any) => {
             const selectedKey = data.currentKey;
-            const relevantData = seatData.find((seat) => seat.id?.toString() === selectedKey);
+            const relevantData = seatData.find(
+                (seat) => seat.id?.toString() === selectedKey
+            );
             console.log("relevantData:", relevantData);
 
             if (relevantData?.status === "empty") {
@@ -70,9 +73,7 @@ export const SeatSelector = ({
                             size={"sm"}
                             variant={"flat"}
                             className={`capitalize`}
-                            color={
-                                getStatusColor(seat.status)
-                            }
+                            color={getStatusColor(seat.status)}
                         >
                             {seat.status}
                         </Chip>
@@ -152,7 +153,7 @@ export const SeatSelector = ({
                     onSelectionChange: handleSelectionChange,
                 }}
                 columns={seatColumns}
-                tableTopContentProps={{text: {search: "Search seats..."}}}
+                tableTopContentProps={{ text: { search: "Search seats..." } }}
                 data={seatData}
                 renderCell={renderCell}
             />

@@ -1,14 +1,17 @@
-import {PageProps} from "@/types";
-import {DashboardPageProps, DashboardReservationsData} from "@/types/dashboard-types";
-import {Key, useCallback, useMemo} from "react";
-import {Reservation} from "@/types/types";
+import { PageProps } from "@/types";
+import {
+    DashboardPageProps,
+    DashboardReservationsData,
+} from "@/types/dashboard-types";
+import { Key, useCallback, useMemo } from "react";
+import { Reservation } from "@/types/types";
 import {
     createReservation,
     deleteReservation,
     editReservation,
-    fetchReservations
+    fetchReservations,
 } from "@/Components/lib/api/dashboard/reservation";
-import {useDashboardPage} from "@/Components/hooks/use-dashboard-page";
+import { useDashboardPage } from "@/Components/hooks/use-dashboard-page";
 
 /**
  * Generate props for the DashboardReservationsPage component.
@@ -17,9 +20,9 @@ import {useDashboardPage} from "@/Components/hooks/use-dashboard-page";
  * @returns Props for the DashboardPage component.
  */
 export function generateDashboardReservationsPageProps({
-                                                           auth,
-                                                           reservations,
-                                                       }: PageProps<DashboardReservationsData>): DashboardPageProps<Reservation> {
+    auth,
+    reservations,
+}: PageProps<DashboardReservationsData>): DashboardPageProps<Reservation> {
     const {
         selectedId,
         setSelectedId,
@@ -39,9 +42,9 @@ export function generateDashboardReservationsPageProps({
     // Reservation table columns
     const reservationColumns = useMemo(
         () => [
-            {key: "id", label: "ID"},
-            {key: "user_name", label: "User Name"},
-            {key: "room_order", label: "Room Order"},
+            { key: "id", label: "ID" },
+            { key: "user_name", label: "User Name" },
+            { key: "room_order", label: "Room Order" },
         ],
         []
     );
@@ -75,14 +78,26 @@ export function generateDashboardReservationsPageProps({
     const createForm = {
         schema: {
             fields: [
-                {label: "User Name", name: "user_name" as keyof Reservation, type: "text", required: true},
-                {label: "Reserved Date", name: "room_order" as keyof Reservation, type: "date", required: true},
+                {
+                    label: "User Name",
+                    name: "user_name" as keyof Reservation,
+                    type: "text",
+                    required: true,
+                },
+                {
+                    label: "Reserved Date",
+                    name: "room_order" as keyof Reservation,
+                    type: "date",
+                    required: true,
+                },
             ],
         },
         initialValues: {} as Partial<Reservation>,
         onSubmit: async (values: Partial<Reservation>) => {
             try {
-                const {data: newReservation} = await createReservation(values);
+                const { data: newReservation } = await createReservation(
+                    values
+                );
                 setDisplayedReservations((prev) => [...prev, newReservation]);
             } catch (error) {
                 console.error("Error creating reservation:", error);
@@ -94,18 +109,33 @@ export function generateDashboardReservationsPageProps({
     const editForm = {
         schema: {
             fields: [
-                {label: "User Name", name: "user_name" as keyof Reservation, type: "text", required: true},
-                {label: "Reserved Date", name: "room_order" as keyof Reservation, type: "date", required: true},
+                {
+                    label: "User Name",
+                    name: "user_name" as keyof Reservation,
+                    type: "text",
+                    required: true,
+                },
+                {
+                    label: "Reserved Date",
+                    name: "room_order" as keyof Reservation,
+                    type: "date",
+                    required: true,
+                },
             ],
         },
         onSubmit: async (values: Partial<Reservation>) => {
             if (!selectedId) return;
 
             try {
-                const {data: updatedReservation} = await editReservation(selectedId, values);
+                const { data: updatedReservation } = await editReservation(
+                    selectedId,
+                    values
+                );
                 setDisplayedReservations((prev) =>
                     prev.map((reservation) =>
-                        reservation.id === updatedReservation.id ? updatedReservation : reservation
+                        reservation.id === updatedReservation.id
+                            ? updatedReservation
+                            : reservation
                     )
                 );
             } catch (error) {
@@ -152,7 +182,7 @@ export function generateDashboardReservationsPageProps({
         selectedItem,
         onDeleteItem,
         table,
-        pagination: {hasMore, loading, onLoadMore},
+        pagination: { hasMore, loading, onLoadMore },
         tableProps,
     };
 }

@@ -1,45 +1,53 @@
-import {DropdownItem, Link} from "@nextui-org/react";
-import {BracketsIcon, ChevronLeftIcon, Clock3Icon, Home, PlayIcon, TagIcon, UsersIcon} from "lucide-react";
+import { DropdownItem, Link } from "@nextui-org/react";
+import {
+    BracketsIcon,
+    ChevronLeftIcon,
+    Clock3Icon,
+    Home,
+    PlayIcon,
+    TagIcon,
+    UsersIcon,
+} from "lucide-react";
 import React from "react";
-import {User} from "@/types";
+import { User } from "@/types";
 
 const items = [
     {
         title: "Home",
         url: "/dashboard",
-        icon: <Home/>,
+        icon: <Home />,
     },
     {
         title: "Movies",
         url: "/dashboard/movies",
-        icon: <PlayIcon/>,
+        icon: <PlayIcon />,
     },
     {
         title: "Display Times",
         url: "/dashboard/display-times",
-        icon: <Clock3Icon/>,
+        icon: <Clock3Icon />,
     },
     {
         title: "Reservations",
         url: "/dashboard/reservations",
-        icon: <TagIcon/>,
+        icon: <TagIcon />,
     },
     {
         title: "Users",
         url: "/dashboard/users",
-        icon: <UsersIcon/>,
+        icon: <UsersIcon />,
     },
     {
         title: "API",
         url: "/dashboard/api",
-        icon: <BracketsIcon/>,
+        icon: <BracketsIcon />,
     },
     {
         title: "Back to Website",
         url: "/",
-        icon: <ChevronLeftIcon/>,
-    }
-]
+        icon: <ChevronLeftIcon />,
+    },
+];
 
 export type DashboardSidebarConfig = {
     activeItem: string;
@@ -53,7 +61,7 @@ export type DashboardSidebarConfig = {
         searchResultsText: string;
         toggleSidebar: string;
     };
-}
+};
 
 /**
  * Generates props for the SidebarComposed component.
@@ -61,7 +69,10 @@ export type DashboardSidebarConfig = {
  * @param activeItem - The currently active item in the sidebar.
  * @returns Props for SidebarComposed.
  */
-export function generateSidebarConfig(user: User, activeItem: typeof items[number]["title"]): DashboardSidebarConfig {
+export function generateSidebarConfig(
+    user: User,
+    activeItem: (typeof items)[number]["title"]
+): DashboardSidebarConfig {
     // Define the active item in the sidebar.
 
     // Define the sidebar footer content.
@@ -90,12 +101,7 @@ export function generateSidebarConfig(user: User, activeItem: typeof items[numbe
             <DropdownItem key="home" href="/">
                 Home
             </DropdownItem>
-            <DropdownItem
-                key="logout"
-                color="danger"
-                onPress={() => {
-                }}
-            >
+            <DropdownItem key="logout" color="danger" onPress={() => {}}>
                 Log Out
             </DropdownItem>
         </>

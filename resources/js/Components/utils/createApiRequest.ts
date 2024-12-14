@@ -1,5 +1,5 @@
-import {toast} from "sonner";
-import {ensureError} from "@/Components/utils/error";
+import { toast } from "sonner";
+import { ensureError } from "@/Components/utils/error";
 
 /**
  * Wraps an API function to handle errors and success/failure cases.
@@ -20,11 +20,15 @@ export function createApiRequest<T extends (...args: any[]) => Promise<any>>(
     shouldRethrowError = false,
     hideToast = false
 ): (...args: Parameters<T>) => Promise<Awaited<ReturnType<T>>> {
-    return async function (...args: Parameters<T>): Promise<Awaited<ReturnType<T>>> {
+    return async function (
+        ...args: Parameters<T>
+    ): Promise<Awaited<ReturnType<T>>> {
         let retries = shouldRetryOnError ? 1 : 0;
 
         // Only show the loading toast if hideToast is false
-        const toastId = hideToast ? undefined : toast.loading("Processing request...");
+        const toastId = hideToast
+            ? undefined
+            : toast.loading("Processing request...");
 
         while (true) {
             try {
@@ -32,7 +36,9 @@ export function createApiRequest<T extends (...args: any[]) => Promise<any>>(
 
                 // Handle success
                 if (!hideToast) {
-                    toast.success("Request completed successfully!", {id: toastId});
+                    toast.success("Request completed successfully!", {
+                        id: toastId,
+                    });
                 }
                 if (onSuccess) {
                     onSuccess(data);
@@ -44,7 +50,9 @@ export function createApiRequest<T extends (...args: any[]) => Promise<any>>(
 
                 // Handle error
                 if (!hideToast) {
-                    toast.error(`Error: ${ensuredError.message}`, {id: toastId});
+                    toast.error(`Error: ${ensuredError.message}`, {
+                        id: toastId,
+                    });
                 }
 
                 if (onError) {
@@ -57,7 +65,7 @@ export function createApiRequest<T extends (...args: any[]) => Promise<any>>(
                 if (retries > 0) {
                     retries--;
                     if (!hideToast) {
-                        toast.loading("Retrying request...", {id: toastId});
+                        toast.loading("Retrying request...", { id: toastId });
                     }
                     continue; // Retry the loop
                 }

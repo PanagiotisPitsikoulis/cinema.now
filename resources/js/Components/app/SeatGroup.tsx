@@ -1,24 +1,24 @@
-import {Avatar, Card, CardBody} from "@nextui-org/react";
-import {cn, getAvatarUrl} from "@/Components/utils";
-import {Dispatch, SetStateAction} from "react";
-import {Reservation} from "@/types/types";
-import {getStatusColor} from "@/Components/lib/config/config";
+import { Avatar, Card, CardBody } from "@nextui-org/react";
+import { cn, getAvatarUrl } from "@/Components/utils";
+import { Dispatch, SetStateAction } from "react";
+import { Reservation } from "@/types/types";
+import { getStatusColor } from "@/Components/lib/config/config";
 
 export type Status = "empty" | "pending" | "booked";
 
 const ALPHABET_ARRAY = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 export function SeatGroup({
-                              rows,
-                              columns,
-                              showRowNumbers,
-                              showColumnNumbers,
-                              rowNumbersOffset,
-                              columnNumbersOffset,
-                              data,
-                              selectedSeat,
-                              setSelectedSeat,
-                          }: {
+    rows,
+    columns,
+    showRowNumbers,
+    showColumnNumbers,
+    rowNumbersOffset,
+    columnNumbersOffset,
+    data,
+    selectedSeat,
+    setSelectedSeat,
+}: {
     rows: number;
     columns: number;
     showRowNumbers?: boolean;
@@ -36,14 +36,18 @@ export function SeatGroup({
                 {showColumnNumbers && (
                     <div
                         className="grid gap-4"
-                        style={{gridTemplateColumns: `repeat(${columns + 1}, 1fr)`}}
+                        style={{
+                            gridTemplateColumns: `repeat(${columns + 1}, 1fr)`,
+                        }}
                     >
-                        {Array.from({length: columns}).map((_, i) => (
+                        {Array.from({ length: columns }).map((_, i) => (
                             <div
                                 className="flex items-center justify-center text-center h-10 w-10 text-foreground-500"
                                 key={i}
                             >
-                                {columnNumbersOffset ? columnNumbersOffset + i + 1 : i + 1}
+                                {columnNumbersOffset
+                                    ? columnNumbersOffset + i + 1
+                                    : i + 1}
                             </div>
                         ))}
                         <div></div>
@@ -54,16 +58,20 @@ export function SeatGroup({
                 <div className="flex flex-row-reverse gap-4">
                     {/* Row Numbers */}
                     <div className="grid gap-4">
-                        {Array.from({length: rows}).map((_, i) => (
+                        {Array.from({ length: rows }).map((_, i) => (
                             <div
                                 className="flex items-center justify-center h-10 w-10 text-foreground-500"
                                 key={i}
                             >
                                 {showRowNumbers && (
                                     <>
-                                        {ALPHABET_ARRAY[
-                                            rowNumbersOffset ? rowNumbersOffset + i : i
-                                            ]}
+                                        {
+                                            ALPHABET_ARRAY[
+                                                rowNumbersOffset
+                                                    ? rowNumbersOffset + i
+                                                    : i
+                                            ]
+                                        }
                                     </>
                                 )}
                             </div>
@@ -73,7 +81,9 @@ export function SeatGroup({
                     {/* Render Seats */}
                     <div
                         className="grid gap-4"
-                        style={{gridTemplateColumns: `repeat(${columns}, 1fr)`}}
+                        style={{
+                            gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                        }}
                     >
                         {data.map((seat) => (
                             <div
@@ -90,12 +100,17 @@ export function SeatGroup({
                                         isBordered
                                         size="sm"
                                         color={getStatusColor(seat.status)}
-                                        src={getAvatarUrl(seat?.user_id.toString())}
+                                        src={getAvatarUrl(
+                                            seat?.user_id.toString()
+                                        )}
                                     />
                                 ) : (
                                     <Card
-                                        className={cn("h-10 w-10 rounded-md bg-content2",
-                                            selectedSeat?.toString() === seat.id.toString() && "border-primary border-2"
+                                        className={cn(
+                                            "h-10 w-10 rounded-md bg-content2",
+                                            selectedSeat?.toString() ===
+                                                seat.id.toString() &&
+                                                "border-primary border-2"
                                         )}
                                         shadow="none"
                                     >

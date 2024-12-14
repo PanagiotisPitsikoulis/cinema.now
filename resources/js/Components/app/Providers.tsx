@@ -1,7 +1,7 @@
-import React from 'react';
-import {NextUIProvider} from "@nextui-org/react";
-import {ThemeProvider} from "@/Components/app/ThemeProvider";
-import {Toaster} from "sonner";
+import React from "react";
+import { NextUIProvider } from "@nextui-org/react";
+import { ThemeProvider } from "@/Components/app/ThemeProvider";
+import { Toaster } from "sonner";
 
 /**
  * The root provider for the application.
@@ -10,8 +10,7 @@ import {Toaster} from "sonner";
  * @param children - The children of the provider.
  * @returns JSX.Element
  */
-function Providers({children}: { children: React.ReactNode }) {
-
+function Providers({ children }: { children: React.ReactNode }) {
     return (
         <>
             <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -19,7 +18,7 @@ function Providers({children}: { children: React.ReactNode }) {
                     <div className={"dark:border-content2 border-content4"}>
                         {children}
                     </div>
-                    <Toaster closeButton={true} richColors={true}/>
+                    <Toaster closeButton={true} richColors={true} />
                 </NextUIProvider>
             </ThemeProvider>
         </>

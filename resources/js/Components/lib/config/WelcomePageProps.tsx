@@ -1,10 +1,15 @@
-import {HeartIcon, PaintbrushIcon, RocketIcon, SmartphoneIcon} from "lucide-react";
-import {SectionComposedProps} from "@/Components/lib/composed/SectionComposed";
-import {LandingSectionProps} from "@/Components/lib/ui/landing/LandingSection";
-import {FeaturedCarousel} from "@/Components/lib/ui/FeaturedCarousel";
-import {HeroComposedProps} from "@/Components/lib/composed/HeroComposed";
-import {CTAComposedProps} from "@/Components/lib/composed/CTAComposed";
-import {Movie} from "@/types/types";
+import {
+    HeartIcon,
+    PaintbrushIcon,
+    RocketIcon,
+    SmartphoneIcon,
+} from "lucide-react";
+import { SectionComposedProps } from "@/Components/lib/composed/SectionComposed";
+import { LandingSectionProps } from "@/Components/lib/ui/landing/LandingSection";
+import { FeaturedCarousel } from "@/Components/lib/ui/FeaturedCarousel";
+import { HeroComposedProps } from "@/Components/lib/composed/HeroComposed";
+import { CTAComposedProps } from "@/Components/lib/composed/CTAComposed";
+import { Movie } from "@/types/types";
 
 export type WelcomePageProps = {
     heroComposedProps: HeroComposedProps;
@@ -13,14 +18,16 @@ export type WelcomePageProps = {
     section3Props: SectionComposedProps;
     section4Props: SectionComposedProps;
     ctaComposedProps: CTAComposedProps;
-}
+};
 
 /**
  * Generates component props for the Welcome page.
  * @param movies - The list of movies for the featured carousel.
  * @returns Component props for the Welcome page.
  */
-export function generateWelcomePageComponentProps(movies: Movie[]): WelcomePageProps {
+export function generateWelcomePageComponentProps(
+    movies: Movie[]
+): WelcomePageProps {
     /**
      * Pass in text, images, and CTA link/text to the Hero component.
      */
@@ -44,7 +51,9 @@ export function generateWelcomePageComponentProps(movies: Movie[]): WelcomePageP
     const featuredSectionProps: LandingSectionProps = {
         animatedWrapperProps: {
             animatedWrapperPropsText: {
-                triggerOnView: true, right: 40, duration: 0.5
+                triggerOnView: true,
+                right: 40,
+                duration: 0.5,
             },
         },
         orientation: "left",
@@ -55,8 +64,13 @@ export function generateWelcomePageComponentProps(movies: Movie[]): WelcomePageP
                 "From blockbuster hits to indie gems, CinemaNow offers a wide selection to cater to every taste and mood.",
             size: "md",
         },
-        content: <FeaturedCarousel buttonProps={{children: "Book"}} link={{prefix: "/movie"}}
-                                   items={movies.slice(0, 20)}/>,
+        content: (
+            <FeaturedCarousel
+                buttonProps={{ children: "Book" }}
+                link={{ prefix: "/movie" }}
+                items={movies.slice(0, 20)}
+            />
+        ),
     };
 
     /**
@@ -80,20 +94,20 @@ export function generateWelcomePageComponentProps(movies: Movie[]): WelcomePageP
         features: [
             {
                 title: "Intuitive Interface",
-                icon: <SmartphoneIcon className="text-primary"/>,
+                icon: <SmartphoneIcon className="text-primary" />,
             },
             {
                 title: "Seamless Integration",
-                icon: <HeartIcon className="text-primary"/>,
+                icon: <HeartIcon className="text-primary" />,
             },
             {
                 title: "Easy Navigation",
-                icon: <RocketIcon className="text-primary"/>,
+                icon: <RocketIcon className="text-primary" />,
             },
             {
                 title: "Personalized Recommendations",
-                icon: <PaintbrushIcon className="text-primary"/>,
-            }
+                icon: <PaintbrushIcon className="text-primary" />,
+            },
         ],
     };
 
@@ -118,19 +132,19 @@ export function generateWelcomePageComponentProps(movies: Movie[]): WelcomePageP
         features: [
             {
                 title: "Includes thousands of movies",
-                icon: <PaintbrushIcon className="text-primary"/>,
+                icon: <PaintbrushIcon className="text-primary" />,
             },
             {
                 title: "AI-powered recommendations",
-                icon: <RocketIcon className="text-primary"/>,
+                icon: <RocketIcon className="text-primary" />,
             },
             {
                 title: "Mobile-friendly interface",
-                icon: <SmartphoneIcon className="text-primary"/>,
+                icon: <SmartphoneIcon className="text-primary" />,
             },
             {
                 title: "Dark Mode Support",
-                icon: <HeartIcon className="text-primary"/>,
+                icon: <HeartIcon className="text-primary" />,
             },
         ],
     };
@@ -156,19 +170,19 @@ export function generateWelcomePageComponentProps(movies: Movie[]): WelcomePageP
         features: [
             {
                 title: "Easy Reservation Management",
-                icon: <PaintbrushIcon className="text-primary"/>,
+                icon: <PaintbrushIcon className="text-primary" />,
             },
             {
                 title: "Search your reservations",
-                icon: <RocketIcon className="text-primary"/>,
+                icon: <RocketIcon className="text-primary" />,
             },
             {
                 title: "Mobile reservation management",
-                icon: <SmartphoneIcon className="text-primary"/>,
+                icon: <SmartphoneIcon className="text-primary" />,
             },
             {
                 title: "Reservation reminders",
-                icon: <HeartIcon className="text-primary"/>,
+                icon: <HeartIcon className="text-primary" />,
             },
         ],
     };

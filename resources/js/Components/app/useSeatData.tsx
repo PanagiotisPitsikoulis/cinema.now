@@ -1,5 +1,5 @@
-import {useMemo} from "react";
-import type {ExtendedDisplayTime, Reservation} from "@/types/types";
+import { useMemo } from "react";
+import type { ExtendedDisplayTime, Reservation } from "@/types/types";
 
 /**
  * A hook to generate seat data for the SeatSelector component.
@@ -16,16 +16,22 @@ function useSeatData(
     return useMemo(() => {
         if (!display_times || !selectedDisplayTime) return [];
 
-        const currentDisplayTime = display_times.find((dt) => dt.id === selectedDisplayTime);
+        const currentDisplayTime = display_times.find(
+            (dt) => dt.id === selectedDisplayTime
+        );
         if (!currentDisplayTime) return [];
 
-        const sortedReservations = currentDisplayTime.reservations
-            ?.slice()
-            ?.sort((a, b) => parseInt(a.room_order, 10) - parseInt(b.room_order, 10)) || [];
+        const sortedReservations =
+            currentDisplayTime.reservations
+                ?.slice()
+                ?.sort(
+                    (a, b) =>
+                        parseInt(a.room_order, 10) - parseInt(b.room_order, 10)
+                ) || [];
 
         const usedReservations = new Set<string>();
 
-        return Array.from({length: 9 * 4 * 2 + 9 * 7 * 2}, (_, i) => {
+        return Array.from({ length: 9 * 4 * 2 + 9 * 7 * 2 }, (_, i) => {
             const roomOrder = (i + 1).toString(); // Ensure this value is unique within its scope
 
             const existingReservation = sortedReservations.find(

@@ -1,15 +1,15 @@
-import DangerButton from '@/Components/laravel-defaults/DangerButton';
-import InputError from '@/Components/laravel-defaults/InputError';
-import InputLabel from '@/Components/laravel-defaults/InputLabel';
-import Modal from '@/Components/laravel-defaults/Modal';
-import SecondaryButton from '@/Components/laravel-defaults/SecondaryButton';
-import TextInput from '@/Components/laravel-defaults/TextInput';
-import {useForm} from '@inertiajs/react';
-import {FormEventHandler, useRef, useState} from 'react';
+import DangerButton from "@/Components/laravel-defaults/DangerButton";
+import InputError from "@/Components/laravel-defaults/InputError";
+import InputLabel from "@/Components/laravel-defaults/InputLabel";
+import Modal from "@/Components/laravel-defaults/Modal";
+import SecondaryButton from "@/Components/laravel-defaults/SecondaryButton";
+import TextInput from "@/Components/laravel-defaults/TextInput";
+import { useForm } from "@inertiajs/react";
+import { FormEventHandler, useRef, useState } from "react";
 
 export default function DeleteUserForm({
-                                           className = '',
-                                       }: {
+    className = "",
+}: {
     className?: string;
 }) {
     const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
@@ -24,7 +24,7 @@ export default function DeleteUserForm({
         errors,
         clearErrors,
     } = useForm({
-        password: '',
+        password: "",
     });
 
     const confirmUserDeletion = () => {
@@ -34,7 +34,7 @@ export default function DeleteUserForm({
     const deleteUser: FormEventHandler = (e) => {
         e.preventDefault();
 
-        destroy(route('profile.destroy'), {
+        destroy(route("profile.destroy"), {
             preserveScroll: true,
             onSuccess: () => closeModal(),
             onError: () => passwordInput.current?.focus(),
@@ -95,7 +95,7 @@ export default function DeleteUserForm({
                             ref={passwordInput}
                             value={data.password}
                             onChange={(e) =>
-                                setData('password', e.target.value)
+                                setData("password", e.target.value)
                             }
                             className="mt-1 block w-3/4"
                             isFocused

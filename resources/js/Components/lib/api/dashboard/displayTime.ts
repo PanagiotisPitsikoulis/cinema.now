@@ -1,5 +1,5 @@
-import {createApiRequest} from "@/Components/utils/createApiRequest";
-import {DisplayTime} from "@/types/types";
+import { createApiRequest } from "@/Components/utils/createApiRequest";
+import { DisplayTime } from "@/types/types";
 import axios from "axios";
 
 // Base URL for admin endpoints
@@ -14,7 +14,7 @@ export const fetchDisplayTimes = createApiRequest(
         perPage: number
     ): Promise<{ data: DisplayTime[]; hasMore: boolean }> {
         const response = await axios.get(`${adminApiBase}/display-times`, {
-            params: {page, per_page: perPage},
+            params: { page, per_page: perPage },
         });
         return response.data;
     },
@@ -29,12 +29,17 @@ export const fetchDisplayTimes = createApiRequest(
  * Creates a new display time using the admin API.
  */
 export const createDisplayTime = createApiRequest(
-    async function createDisplayTime(displayTimeData: Partial<DisplayTime>): Promise<{
+    async function createDisplayTime(
+        displayTimeData: Partial<DisplayTime>
+    ): Promise<{
         success: boolean;
         message: string;
-        data: DisplayTime
+        data: DisplayTime;
     }> {
-        const response = await axios.post(`${adminApiBase}/display-times`, displayTimeData);
+        const response = await axios.post(
+            `${adminApiBase}/display-times`,
+            displayTimeData
+        );
         return response.data;
     }
 );
@@ -42,23 +47,31 @@ export const createDisplayTime = createApiRequest(
 /**
  * Updates an existing display time using the admin API.
  */
-export const editDisplayTime = createApiRequest(
-    async function editDisplayTime(displayTimeId: number, displayTimeData: Partial<DisplayTime>): Promise<{
-        success: boolean;
-        message: string;
-        data: DisplayTime
-    }> {
-        const response = await axios.put(`${adminApiBase}/display-times/${displayTimeId}`, displayTimeData);
-        return response.data;
-    }
-);
+export const editDisplayTime = createApiRequest(async function editDisplayTime(
+    displayTimeId: number,
+    displayTimeData: Partial<DisplayTime>
+): Promise<{
+    success: boolean;
+    message: string;
+    data: DisplayTime;
+}> {
+    const response = await axios.put(
+        `${adminApiBase}/display-times/${displayTimeId}`,
+        displayTimeData
+    );
+    return response.data;
+});
 
 /**
  * Deletes a display time by its ID using the admin API.
  */
 export const deleteDisplayTime = createApiRequest(
-    async function deleteDisplayTime(displayTimeId: number): Promise<{ success: boolean; message: string }> {
-        const response = await axios.delete(`${adminApiBase}/display-times/${displayTimeId}`);
+    async function deleteDisplayTime(
+        displayTimeId: number
+    ): Promise<{ success: boolean; message: string }> {
+        const response = await axios.delete(
+            `${adminApiBase}/display-times/${displayTimeId}`
+        );
         return response.data;
     }
 );

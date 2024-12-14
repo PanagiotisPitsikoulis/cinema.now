@@ -1,8 +1,8 @@
 import React from "react";
-import {LandingSection} from "@/Components/lib/ui/landing/LandingSection";
-import {Button} from "@nextui-org/react";
-import {ArrowRightIcon} from "@nextui-org/shared-icons";
-import {Link} from "@inertiajs/react";
+import { LandingSection } from "@/Components/lib/ui/landing/LandingSection";
+import { Button } from "@nextui-org/react";
+import { ArrowRightIcon } from "@nextui-org/shared-icons";
+import { Link } from "@inertiajs/react";
 import BackgroundContainer from "@/Components/lib/ui/BackgroundContainer";
 
 export type CTAComposedProps = {
@@ -20,7 +20,12 @@ export type CTAComposedProps = {
  * @param ctaText - The text for the call-to-action button.
  * @returns JSX.Element
  */
-export const CTAComposed: React.FC<CTAComposedProps> = ({title, subtitle, ctaLink, ctaText}) => {
+export const CTAComposed: React.FC<CTAComposedProps> = ({
+    title,
+    subtitle,
+    ctaLink,
+    ctaText,
+}) => {
     return (
         <BackgroundContainer className="-mx-10 px-10 lg:-mx-20 lg:px-20 h-[100vh]">
             <LandingSection
@@ -33,7 +38,7 @@ export const CTAComposed: React.FC<CTAComposedProps> = ({title, subtitle, ctaLin
                         <Button
                             as={Link}
                             href={ctaLink}
-                            endContent={<ArrowRightIcon/>}
+                            endContent={<ArrowRightIcon />}
                             size="lg"
                             color="primary"
                         >

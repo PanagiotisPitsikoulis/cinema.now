@@ -1,7 +1,7 @@
-import {createApiRequest} from "@/Components/utils/createApiRequest";
-import {Movie} from "@/types/types";
+import { createApiRequest } from "@/Components/utils/createApiRequest";
+import { Movie } from "@/types/types";
 import axios from "axios";
-import {router} from "@inertiajs/react";
+import { router } from "@inertiajs/react";
 
 /**
  * Posts a reservation for a movie and selected display time and seat.
@@ -11,7 +11,11 @@ import {router} from "@inertiajs/react";
  * @returns A promise resolving to the created reservation.
  */
 export const handlePostReservation = createApiRequest(
-    async function (movie: Movie, selectedDisplayTime: number, selectedSeat: string | null) {
+    async function (
+        movie: Movie,
+        selectedDisplayTime: number,
+        selectedSeat: string | null
+    ) {
         const response = await axios.post("/api/reservations", {
             display_time_id: selectedDisplayTime,
             room_order: selectedSeat ? parseInt(selectedSeat, 10) : null,

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
     Sidebar,
     SidebarContent,
@@ -13,12 +13,20 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "@/Components/lib/ui/sidebar";
-import {Avatar, Button, Dropdown, DropdownMenu, DropdownTrigger, Input, Spacer} from "@nextui-org/react";
-import {cn, getAvatarUrl} from "@/Components/utils";
-import {User} from "@/types";
-import {ChevronsUpDown, SearchIcon} from "lucide-react";
-import {ThemeSwitch} from "@/Components/lib/ui/theme-switch";
-import {Link} from "@inertiajs/react";
+import {
+    Avatar,
+    Button,
+    Dropdown,
+    DropdownMenu,
+    DropdownTrigger,
+    Input,
+    Spacer,
+} from "@nextui-org/react";
+import { cn, getAvatarUrl } from "@/Components/utils";
+import { User } from "@/types";
+import { ChevronsUpDown, SearchIcon } from "lucide-react";
+import { ThemeSwitch } from "@/Components/lib/ui/theme-switch";
+import { Link } from "@inertiajs/react";
 
 export type DashboardProps = {
     children?: React.ReactNode;
@@ -73,17 +81,17 @@ export type DashboardProps = {
  * @param sidebarFooterContent - The content for the sidebar footer.
  */
 export function SidebarComposed({
-                                    children,
-                                    user,
-                                    items,
-                                    activeItem,
-                                    sidebarVariant = "inset",
-                                    className,
-                                    classNames = {},
-                                    text = {},
-                                    dropdownMenuItems,
-                                    sidebarFooterContent,
-                                }: DashboardProps) {
+    children,
+    user,
+    items,
+    activeItem,
+    sidebarVariant = "inset",
+    className,
+    classNames = {},
+    text = {},
+    dropdownMenuItems,
+    sidebarFooterContent,
+}: DashboardProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredItems, setFilteredItems] = useState(items);
 
@@ -104,8 +112,18 @@ export function SidebarComposed({
     };
 
     return (
-        <SidebarProvider className={cn("w-full bg-content2 dark:bg-content1", className, classNames.base)}>
-            <Sidebar collapsible={"offcanvas"} variant={sidebarVariant} className={cn("px-2", classNames.base)}>
+        <SidebarProvider
+            className={cn(
+                "w-full bg-content2 dark:bg-content1",
+                className,
+                classNames.base
+            )}
+        >
+            <Sidebar
+                collapsible={"offcanvas"}
+                variant={sidebarVariant}
+                className={cn("px-2", classNames.base)}
+            >
                 <SidebarContent>
                     {/* User Avatar and Dropdown */}
                     <SidebarHeader className={cn("py-1", classNames.header)}>
@@ -120,17 +138,28 @@ export function SidebarComposed({
                                 >
                                     <Avatar
                                         isBordered
-                                        className={cn("transition-transform shrink-0", classNames.avatarContent)}
+                                        className={cn(
+                                            "transition-transform shrink-0",
+                                            classNames.avatarContent
+                                        )}
                                         color="primary"
                                         name={user.name}
                                         size="sm"
                                         src={getAvatarUrl(user.id.toString())}
                                     />
                                     <div className="text-left">
-                                        <p className="font-semibold text-sm">{signedInAs}</p>
-                                        <p className="text-foreground-600 text-xs">{user.email}</p>
+                                        <p className="font-semibold text-sm">
+                                            {signedInAs}
+                                        </p>
+                                        <p className="text-foreground-600 text-xs">
+                                            {user.email}
+                                        </p>
                                     </div>
-                                    <ChevronsUpDown className={"size-4 text-foreground-600 ml-auto"}/>
+                                    <ChevronsUpDown
+                                        className={
+                                            "size-4 text-foreground-600 ml-auto"
+                                        }
+                                    />
                                 </Button>
                             </DropdownTrigger>
                             <DropdownMenu
@@ -148,7 +177,9 @@ export function SidebarComposed({
                         <SidebarGroupContent>
                             <SidebarMenu className={cn(classNames.menu)}>
                                 {/* Search Input */}
-                                <SidebarMenuItem className={cn(classNames.searchWrapper)}>
+                                <SidebarMenuItem
+                                    className={cn(classNames.searchWrapper)}
+                                >
                                     <Input
                                         isClearable
                                         placeholder={searchPlaceholder}
@@ -158,30 +189,45 @@ export function SidebarComposed({
                                         onChange={handleSearch}
                                         onClear={() => {
                                             setSearchQuery("");
-                                            setFilteredItems(items)
+                                            setFilteredItems(items);
                                         }}
                                         classNames={{
-                                            input: cn("!border-none !ring-0 !outline-none", classNames.searchInput),
-                                            inputWrapper: "!border-none !border-b-none shadow-none",
+                                            input: cn(
+                                                "!border-none !ring-0 !outline-none",
+                                                classNames.searchInput
+                                            ),
+                                            inputWrapper:
+                                                "!border-none !border-b-none shadow-none",
                                         }}
-                                        startContent={<SearchIcon/>}
+                                        startContent={<SearchIcon />}
                                     />
                                 </SidebarMenuItem>
-                                <Spacer y={2}/>
+                                <Spacer y={2} />
                                 {/* Menu Items */}
                                 {filteredItems.length > 0 ? (
                                     filteredItems.map((item) => (
                                         <SidebarMenuItem
                                             key={item.title}
-                                            className={cn(classNames.menuItem, item.className)}
+                                            className={cn(
+                                                classNames.menuItem,
+                                                item.className
+                                            )}
                                         >
                                             <SidebarMenuButton asChild>
                                                 <Button
                                                     startContent={item.icon}
                                                     size="md"
                                                     as={Link}
-                                                    variant={activeItem === item.title ? "flat" : "light"}
-                                                    className={cn("flex justify-start", classNames.menuButton)}
+                                                    variant={
+                                                        activeItem ===
+                                                        item.title
+                                                            ? "flat"
+                                                            : "light"
+                                                    }
+                                                    className={cn(
+                                                        "flex justify-start",
+                                                        classNames.menuButton
+                                                    )}
                                                     href={item.url}
                                                 >
                                                     {item.title}
@@ -190,23 +236,30 @@ export function SidebarComposed({
                                         </SidebarMenuItem>
                                     ))
                                 ) : (
-                                    <p className="text-sm text-foreground-600 px-4">{searchResultsText}</p>
+                                    <p className="text-sm text-foreground-600 px-4">
+                                        {searchResultsText}
+                                    </p>
                                 )}
                             </SidebarMenu>
                         </SidebarGroupContent>
                     </SidebarGroup>
                 </SidebarContent>
-                <SidebarFooter>
-                    {sidebarFooterContent}
-                </SidebarFooter>
+                <SidebarFooter>{sidebarFooterContent}</SidebarFooter>
             </Sidebar>
             <SidebarInset>
                 {/* Content Area */}
-                <section className={cn("flex flex-col gap-4 w-full", classNames.content)}>
+                <section
+                    className={cn(
+                        "flex flex-col gap-4 w-full",
+                        classNames.content
+                    )}
+                >
                     <header className="flex py-1 items-center px-4 lg:px-8 border-b border-content2">
                         <div className="h-14 flex items-center justify-between w-full">
-                            <SidebarTrigger className="-ml-1">{toggleSidebar}</SidebarTrigger>
-                            <ThemeSwitch/>
+                            <SidebarTrigger className="-ml-1">
+                                {toggleSidebar}
+                            </SidebarTrigger>
+                            <ThemeSwitch />
                         </div>
                     </header>
                     {children}

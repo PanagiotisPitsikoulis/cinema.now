@@ -11,8 +11,7 @@ export function ensureError(value: unknown): Error {
     let stringified = "[Unable to stringify the thrown value]";
     try {
         stringified = JSON.stringify(value);
-    } catch {
-    }
+    } catch {}
 
     const error = new Error(
         `This value was thrown as is, not through an Error: ${stringified}`
@@ -36,10 +35,10 @@ export function withErrorHandling<T extends (...args: any[]) => Promise<any>>(
     ): Promise<Result<Awaited<ReturnType<T>>>> {
         try {
             const data = await asyncFunction(...args);
-            return {data, error: null};
+            return { data, error: null };
         } catch (err) {
             const error = ensureError(err);
-            return {data: null, error};
+            return { data: null, error };
         }
     };
 }
@@ -55,9 +54,9 @@ export async function withMethodErrorHandling<T>(
 ): Promise<Result<T>> {
     try {
         const data = await method;
-        return {data, error: null};
+        return { data, error: null };
     } catch (err) {
         const error = ensureError(err);
-        return {data: null, error};
+        return { data: null, error };
     }
 }

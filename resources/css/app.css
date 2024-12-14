@@ -1,29 +1,36 @@
+/* Import Tailwind's base styles, components, and utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Apply default background and text colors to the body */
 body {
     @apply bg-background text-foreground;
 }
 
+/* Define custom colors for charts and theme variables */
 @layer base {
+    /* Light mode chart colors */
     :root {
-        --chart-1: 221.2 83.2% 53.3%;
-        --chart-2: 212 95% 68%;
-        --chart-3: 216 92% 60%;
-        --chart-4: 210 98% 78%;
-        --chart-5: 212 97% 87%;
+        --chart-1: 221.2 83.2% 53.3%; /* Chart color 1 (Primary) */
+        --chart-2: 212 95% 68%; /* Chart color 2 (Secondary) */
+        --chart-3: 216 92% 60%; /* Chart color 3 */
+        --chart-4: 210 98% 78%; /* Chart color 4 */
+        --chart-5: 212 97% 87%; /* Chart color 5 */
     }
 
+    /* Dark mode chart colors (matching light mode for now) */
     .dark {
-        --chart-1: 221.2 83.2% 53.3%;
-        --chart-2: 212 95% 68%;
-        --chart-3: 216 92% 60%;
-        --chart-4: 210 98% 78%;
-        --chart-5: 212 97% 87%;
+        --chart-1: 221.2 83.2% 53.3%; /* Chart color 1 (Primary) */
+        --chart-2: 212 95% 68%; /* Chart color 2 (Secondary) */
+        --chart-3: 216 92% 60%; /* Chart color 3 */
+        --chart-4: 210 98% 78%; /* Chart color 4 */
+        --chart-5: 212 97% 87%; /* Chart color 5 */
     }
 }
 
-input, textarea {
+/* Remove borders from input and textarea elements */
+input,
+textarea {
     @apply !border-none;
 }

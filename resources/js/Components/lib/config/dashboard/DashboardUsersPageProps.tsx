@@ -1,8 +1,16 @@
-import {PageProps, User} from "@/types";
-import {DashboardPageProps, DashboardUsersData} from "@/types/dashboard-types";
-import {Key, useCallback, useMemo} from "react";
-import {createUser, deleteUser, editUser, fetchUsers,} from "@/Components/lib/api/dashboard/user";
-import {useDashboardPage} from "@/Components/hooks/use-dashboard-page";
+import { PageProps, User } from "@/types";
+import {
+    DashboardPageProps,
+    DashboardUsersData,
+} from "@/types/dashboard-types";
+import { Key, useCallback, useMemo } from "react";
+import {
+    createUser,
+    deleteUser,
+    editUser,
+    fetchUsers,
+} from "@/Components/lib/api/dashboard/user";
+import { useDashboardPage } from "@/Components/hooks/use-dashboard-page";
 
 /**
  * Generate props for the DashboardUsersPage component.
@@ -11,9 +19,9 @@ import {useDashboardPage} from "@/Components/hooks/use-dashboard-page";
  * @returns Props for the DashboardPage component.
  */
 export function generateDashboardUsersPageProps({
-                                                    auth,
-                                                    users,
-                                                }: PageProps<DashboardUsersData>): DashboardPageProps<User> {
+    auth,
+    users,
+}: PageProps<DashboardUsersData>): DashboardPageProps<User> {
     const {
         selectedId,
         setSelectedId,
@@ -33,38 +41,37 @@ export function generateDashboardUsersPageProps({
     // User table columns
     const userColumns = useMemo(
         () => [
-            {key: "id", label: "ID"},
-            {key: "name", label: "Name"},
-            {key: "email", label: "Email"},
-            {key: "actions", label: "Actions"},
+            { key: "id", label: "ID" },
+            { key: "name", label: "Name" },
+            { key: "email", label: "Email" },
+            { key: "actions", label: "Actions" },
         ],
         []
     );
 
     // Render cell logic
-    const renderCell = useCallback(
-        (user: User, columnKey: Key) => {
-            switch (columnKey) {
-                case "id":
-                    return user.id;
-                case "name":
-                    return <div>{user.name}</div>;
-                case "email":
-                    return <div>{user.email}</div>;
-                case "actions":
-                    return (
-                        <button
-                            onClick={() => console.log(`View details for user ID: ${user.id}`)}
-                        >
-                            View
-                        </button>
-                    );
-                default:
-                    return null;
-            }
-        },
-        []
-    );
+    const renderCell = useCallback((user: User, columnKey: Key) => {
+        switch (columnKey) {
+            case "id":
+                return user.id;
+            case "name":
+                return <div>{user.name}</div>;
+            case "email":
+                return <div>{user.email}</div>;
+            case "actions":
+                return (
+                    <button
+                        onClick={() =>
+                            console.log(`View details for user ID: ${user.id}`)
+                        }
+                    >
+                        View
+                    </button>
+                );
+            default:
+                return null;
+        }
+    }, []);
 
     // Text for forms and headers
     const text = {
@@ -78,15 +85,30 @@ export function generateDashboardUsersPageProps({
     const createForm = {
         schema: {
             fields: [
-                {label: "Name", name: "name" as keyof User, type: "text", required: true},
-                {label: "Email", name: "email" as keyof User, type: "email", required: true},
-                {label: "Password", name: "password" as keyof User, type: "password", required: true},
+                {
+                    label: "Name",
+                    name: "name" as keyof User,
+                    type: "text",
+                    required: true,
+                },
+                {
+                    label: "Email",
+                    name: "email" as keyof User,
+                    type: "email",
+                    required: true,
+                },
+                {
+                    label: "Password",
+                    name: "password" as keyof User,
+                    type: "password",
+                    required: true,
+                },
             ],
         },
         initialValues: {} as Partial<User>,
         onSubmit: async (values: Partial<User>) => {
             try {
-                const {user: newUser} = await createUser(values);
+                const { user: newUser } = await createUser(values);
                 setDisplayedUsers((prev) => [...prev, newUser]);
             } catch (error) {
                 console.error("Error creating user:", error);
@@ -98,18 +120,37 @@ export function generateDashboardUsersPageProps({
     const editForm = {
         schema: {
             fields: [
-                {label: "Name", name: "name" as keyof User, type: "text", required: true},
-                {label: "Email", name: "email" as keyof User, type: "email", required: true},
-                {label: "Password", name: "password" as keyof User, type: "password"},
+                {
+                    label: "Name",
+                    name: "name" as keyof User,
+                    type: "text",
+                    required: true,
+                },
+                {
+                    label: "Email",
+                    name: "email" as keyof User,
+                    type: "email",
+                    required: true,
+                },
+                {
+                    label: "Password",
+                    name: "password" as keyof User,
+                    type: "password",
+                },
             ],
         },
         onSubmit: async (values: Partial<User>) => {
             if (!selectedId) return;
 
             try {
-                const {data: updatedUser} = await editUser(selectedId, values);
+                const { data: updatedUser } = await editUser(
+                    selectedId,
+                    values
+                );
                 setDisplayedUsers((prev) =>
-                    prev.map((user) => (user.id === updatedUser.id ? updatedUser : user))
+                    prev.map((user) =>
+                        user.id === updatedUser.id ? updatedUser : user
+                    )
                 );
             } catch (error) {
                 console.error("Error editing user:", error);
@@ -128,7 +169,9 @@ export function generateDashboardUsersPageProps({
     const onDeleteItem = async (item: User) => {
         try {
             await deleteUser(item.id);
-            setDisplayedUsers((prev) => prev.filter((user) => user.id !== item.id));
+            setDisplayedUsers((prev) =>
+                prev.filter((user) => user.id !== item.id)
+            );
             setSelectedId(null);
         } catch (error) {
             console.error("Error deleting user:", error);
@@ -143,7 +186,8 @@ export function generateDashboardUsersPageProps({
 
     return {
         hasMore,
-        selectedId, setSelectedId,
+        selectedId,
+        setSelectedId,
         auth,
         activeItem: "Users",
         text,
@@ -152,7 +196,7 @@ export function generateDashboardUsersPageProps({
         selectedItem,
         onDeleteItem,
         table,
-        pagination: {hasMore, loading, onLoadMore},
+        pagination: { hasMore, loading, onLoadMore },
         tableProps,
     };
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
-import {Movie} from "@/types/types";
-import {createApiRequest} from "@/Components/utils/createApiRequest";
+import { Movie } from "@/types/types";
+import { createApiRequest } from "@/Components/utils/createApiRequest";
 
 /**
  * Fetches more movies based on the current page and items per page.

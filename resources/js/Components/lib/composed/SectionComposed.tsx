@@ -1,8 +1,8 @@
 import React from "react";
-import {LandingSection} from "@/Components/lib/ui/landing/LandingSection";
-import {Safari} from "@/Components/lib/ui/safari";
-import {FeaturesGrid} from "@/Components/lib/ui/features-grid";
-import {LandingTextProps} from "@/Components/lib/ui/landing/LandingText";
+import { LandingSection } from "@/Components/lib/ui/landing/LandingSection";
+import { Safari } from "@/Components/lib/ui/safari";
+import { FeaturesGrid } from "@/Components/lib/ui/features-grid";
+import { LandingTextProps } from "@/Components/lib/ui/landing/LandingText";
 
 export type SectionComposedProps = {
     text: LandingTextProps;
@@ -24,7 +24,11 @@ export type SectionComposedProps = {
  * @param features - Optional features to display below the text.
  * @returns JSX.Element
  */
-export const SectionLeftComposed: React.FC<SectionComposedProps> = ({text, image, features}) => {
+export const SectionLeftComposed: React.FC<SectionComposedProps> = ({
+    text,
+    image,
+    features,
+}) => {
     return (
         <LandingSection
             animatedWrapperProps={{
@@ -75,7 +79,11 @@ export const SectionLeftComposed: React.FC<SectionComposedProps> = ({text, image
  * @param features - Optional features to display below the text.
  * @returns JSX.Element
  */
-export const SectionRightComposed: React.FC<SectionComposedProps> = ({text, image, features}) => {
+export const SectionRightComposed: React.FC<SectionComposedProps> = ({
+    text,
+    image,
+    features,
+}) => {
     return (
         <LandingSection
             animatedWrapperProps={{

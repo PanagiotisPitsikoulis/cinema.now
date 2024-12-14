@@ -1,14 +1,17 @@
-import {PageProps} from "@/types";
-import {DashboardDisplayTimesData, DashboardPageProps} from "@/types/dashboard-types";
-import {Key, useCallback, useMemo} from "react";
-import {DisplayTime} from "@/types/types";
+import { PageProps } from "@/types";
+import {
+    DashboardDisplayTimesData,
+    DashboardPageProps,
+} from "@/types/dashboard-types";
+import { Key, useCallback, useMemo } from "react";
+import { DisplayTime } from "@/types/types";
 import {
     createDisplayTime,
     deleteDisplayTime,
     editDisplayTime,
-    fetchDisplayTimes
+    fetchDisplayTimes,
 } from "@/Components/lib/api/dashboard/displayTime";
-import {useDashboardPage} from "@/Components/hooks/use-dashboard-page";
+import { useDashboardPage } from "@/Components/hooks/use-dashboard-page";
 
 /**
  * Generate props for the DashboardDisplayTimesPage component.
@@ -17,9 +20,9 @@ import {useDashboardPage} from "@/Components/hooks/use-dashboard-page";
  * @returns Props for the DashboardPage component.
  */
 export function generateDashboardDisplayTimesPageProps({
-                                                           auth,
-                                                           display_times: displayTimes,
-                                                       }: PageProps<DashboardDisplayTimesData>): DashboardPageProps<DisplayTime> {
+    auth,
+    display_times: displayTimes,
+}: PageProps<DashboardDisplayTimesData>): DashboardPageProps<DisplayTime> {
     const {
         selectedId,
         setSelectedId,
@@ -39,9 +42,9 @@ export function generateDashboardDisplayTimesPageProps({
     // Table columns
     const displayTimeColumns = useMemo(
         () => [
-            {key: "id", label: "ID"},
-            {key: "start_time", label: "Start Time"},
-            {key: "end_time", label: "End Time"},
+            { key: "id", label: "ID" },
+            { key: "start_time", label: "Start Time" },
+            { key: "end_time", label: "End Time" },
         ],
         []
     );
@@ -74,14 +77,26 @@ export function generateDashboardDisplayTimesPageProps({
     const createForm = {
         schema: {
             fields: [
-                {label: "Start Time", name: "time_start" as keyof DisplayTime, type: "text", required: true},
-                {label: "End Time", name: "time_end" as keyof DisplayTime, type: "text", required: true},
+                {
+                    label: "Start Time",
+                    name: "time_start" as keyof DisplayTime,
+                    type: "text",
+                    required: true,
+                },
+                {
+                    label: "End Time",
+                    name: "time_end" as keyof DisplayTime,
+                    type: "text",
+                    required: true,
+                },
             ],
         },
         initialValues: {} as Partial<DisplayTime>,
         onSubmit: async (values: Partial<DisplayTime>) => {
             try {
-                const {data: newDisplayTime} = await createDisplayTime(values);
+                const { data: newDisplayTime } = await createDisplayTime(
+                    values
+                );
                 setDisplayedDisplayTimes((prev) => [...prev, newDisplayTime]);
             } catch (error) {
                 console.error("Error creating display time:", error);
@@ -92,18 +107,33 @@ export function generateDashboardDisplayTimesPageProps({
     const editForm = {
         schema: {
             fields: [
-                {label: "Start Time", name: "time_start" as keyof DisplayTime, type: "text", required: true},
-                {label: "End Time", name: "time_end" as keyof DisplayTime, type: "text", required: true},
+                {
+                    label: "Start Time",
+                    name: "time_start" as keyof DisplayTime,
+                    type: "text",
+                    required: true,
+                },
+                {
+                    label: "End Time",
+                    name: "time_end" as keyof DisplayTime,
+                    type: "text",
+                    required: true,
+                },
             ],
         },
         onSubmit: async (values: Partial<DisplayTime>) => {
             if (!selectedId) return;
 
             try {
-                const {data: updatedDisplayTime} = await editDisplayTime(selectedId, values);
+                const { data: updatedDisplayTime } = await editDisplayTime(
+                    selectedId,
+                    values
+                );
                 setDisplayedDisplayTimes((prev) =>
                     prev.map((displayTime) =>
-                        displayTime.id === updatedDisplayTime.id ? updatedDisplayTime : displayTime
+                        displayTime.id === updatedDisplayTime.id
+                            ? updatedDisplayTime
+                            : displayTime
                     )
                 );
             } catch (error) {
@@ -137,7 +167,8 @@ export function generateDashboardDisplayTimesPageProps({
 
     return {
         hasMore,
-        selectedId, setSelectedId,
+        selectedId,
+        setSelectedId,
         auth,
         activeItem: "Display Times",
         text,
@@ -146,7 +177,7 @@ export function generateDashboardDisplayTimesPageProps({
         selectedItem,
         onDeleteItem,
         table,
-        pagination: {hasMore, loading, onLoadMore},
+        pagination: { hasMore, loading, onLoadMore },
         tableProps,
     };
 }

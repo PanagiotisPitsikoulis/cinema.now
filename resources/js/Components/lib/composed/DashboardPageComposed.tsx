@@ -1,12 +1,12 @@
-import React, {Dispatch, SetStateAction, useCallback, useMemo} from "react";
-import {SidebarComposed} from "@/Components/lib/composed/SidebarComposed";
-import {LandingText} from "@/Components/lib/ui/landing/LandingText";
-import {Form} from "@/Components/lib/ui/form";
-import {Column, Table} from "@/Components/lib/ui/data-table";
-import {Button, Spacer} from "@nextui-org/react";
-import {ArrowRightIcon, TrashIcon} from "lucide-react";
-import {PageProps, User} from "@/types";
-import {generateSidebarConfig} from "@/Components/lib/config/dashboard/DashboardSidebarConfig";
+import React, { Dispatch, SetStateAction, useCallback, useMemo } from "react";
+import { SidebarComposed } from "@/Components/lib/composed/SidebarComposed";
+import { LandingText } from "@/Components/lib/ui/landing/LandingText";
+import { Form } from "@/Components/lib/ui/form";
+import { Column, Table } from "@/Components/lib/ui/data-table";
+import { Button, Spacer } from "@nextui-org/react";
+import { ArrowRightIcon, TrashIcon } from "lucide-react";
+import { PageProps, User } from "@/types";
+import { generateSidebarConfig } from "@/Components/lib/config/dashboard/DashboardSidebarConfig";
 
 export type FieldSchema<T> = {
     label: string;
@@ -19,45 +19,49 @@ export type FormSchema<T> = {
     fields: FieldSchema<T>[];
 };
 
-export type DashboardPageProps<T extends { id: number; name?: string }> = PageProps & {
-    hasMore: boolean;
-    selectedId: number | null;
-    setSelectedId: Dispatch<SetStateAction<number | null>>;
-    auth: { user: User };
-    activeItem?: string;
-
-    text: {
-        createTitle: string;
-        createSubtitle: string;
-        editTitle?: string;
-        editSubtitle?: string;
-    };
-
-    createForm: {
-        schema: FormSchema<Partial<T>>;
-        initialValues: Partial<T>;
-        onSubmit: (values: Partial<T>) => Promise<void>;
-    };
-
-    editForm?: {
-        schema: FormSchema<Partial<T>>;
-        onSubmit: (values: Partial<T>) => Promise<void>;
-    };
-
-    table: {
-        columns: Column[];
-        data: T[];
-        renderCell: (item: T, columnKey: keyof T | React.Key) => React.ReactNode;
-    };
-
-    pagination: {
+export type DashboardPageProps<T extends { id: number; name?: string }> =
+    PageProps & {
         hasMore: boolean;
-        loading: boolean;
-        onLoadMore: () => Promise<void>;
-    };
+        selectedId: number | null;
+        setSelectedId: Dispatch<SetStateAction<number | null>>;
+        auth: { user: User };
+        activeItem?: string;
 
-    onDeleteItem?: (item: T) => Promise<void>;
-};
+        text: {
+            createTitle: string;
+            createSubtitle: string;
+            editTitle?: string;
+            editSubtitle?: string;
+        };
+
+        createForm: {
+            schema: FormSchema<Partial<T>>;
+            initialValues: Partial<T>;
+            onSubmit: (values: Partial<T>) => Promise<void>;
+        };
+
+        editForm?: {
+            schema: FormSchema<Partial<T>>;
+            onSubmit: (values: Partial<T>) => Promise<void>;
+        };
+
+        table: {
+            columns: Column[];
+            data: T[];
+            renderCell: (
+                item: T,
+                columnKey: keyof T | React.Key
+            ) => React.ReactNode;
+        };
+
+        pagination: {
+            hasMore: boolean;
+            loading: boolean;
+            onLoadMore: () => Promise<void>;
+        };
+
+        onDeleteItem?: (item: T) => Promise<void>;
+    };
 
 /**
  * Display a dashboard page with a sidebar, a header, and content area.
@@ -76,19 +80,18 @@ export type DashboardPageProps<T extends { id: number; name?: string }> = PagePr
  * @returns JSX.Element
  */
 export function DashboardPage<T extends { id: number; name?: string }>({
-                                                                           auth,
-                                                                           activeItem,
-                                                                           text,
-                                                                           createForm,
-                                                                           editForm,
-                                                                           table,
-                                                                           hasMore,
-                                                                           pagination,
-                                                                           onDeleteItem,
-                                                                           setSelectedId, selectedId
-
-                                                                       }: DashboardPageProps<T>) {
-
+    auth,
+    activeItem,
+    text,
+    createForm,
+    editForm,
+    table,
+    hasMore,
+    pagination,
+    onDeleteItem,
+    setSelectedId,
+    selectedId,
+}: DashboardPageProps<T>) {
     const selectedItem = useMemo(
         () => table.data.find((item) => item.id === selectedId) || null,
         [table.data, selectedId]
@@ -119,7 +122,8 @@ export function DashboardPage<T extends { id: number; name?: string }>({
                     classNames={{
                         title: "lg:max-w-[30rem]",
                         subtitle: "lg:max-w-[30rem]",
-                        bottomContent: "w-full overflow-x-scroll max-md:w-[90vw]",
+                        bottomContent:
+                            "w-full overflow-x-scroll max-md:w-[90vw]",
                     }}
                     orientation="left"
                     size="sm"
@@ -134,7 +138,7 @@ export function DashboardPage<T extends { id: number; name?: string }>({
                         />
                     }
                 />
-                <Spacer y={10}/>
+                <Spacer y={10} />
 
                 {/* Edit Form Section */}
                 {selectedItem && editForm && (
@@ -144,12 +148,16 @@ export function DashboardPage<T extends { id: number; name?: string }>({
                             classNames={{
                                 title: "lg:max-w-[30rem]",
                                 subtitle: "lg:max-w-[30rem]",
-                                bottomContent: "w-full overflow-x-scroll max-md:w-[90vw]",
+                                bottomContent:
+                                    "w-full overflow-x-scroll max-md:w-[90vw]",
                             }}
                             orientation="left"
                             size="sm"
                             title={text.editTitle || "Edit Item"}
-                            subtitle={text.editSubtitle || "Modify the details of the selected item below."}
+                            subtitle={
+                                text.editSubtitle ||
+                                "Modify the details of the selected item below."
+                            }
                             bottomContent={
                                 <Form
                                     schema={editForm.schema as any}
@@ -158,7 +166,7 @@ export function DashboardPage<T extends { id: number; name?: string }>({
                                 />
                             }
                         />
-                        <Spacer y={10}/>
+                        <Spacer y={10} />
                     </>
                 )}
 
@@ -169,20 +177,21 @@ export function DashboardPage<T extends { id: number; name?: string }>({
                         className="flex justify-between items-center p-4 border bg-danger-50 dark:bg-content1 dark:border-content2 border-danger-100 rounded-xl"
                     >
                         <p className="text-base text-danger-800 dark:text-foreground-600">
-                            Delete item: <strong>{selectedItem.name || "this item"}</strong>?
+                            Delete item:{" "}
+                            <strong>{selectedItem.name || "this item"}</strong>?
                         </p>
                         <Button
                             size="sm"
                             color="danger"
                             onPress={handleDeleteSelected}
                             isLoading={pagination.loading}
-                            startContent={<TrashIcon className="size-4"/>}
+                            startContent={<TrashIcon className="size-4" />}
                         >
                             Delete
                         </Button>
                     </div>
                 )}
-                <Spacer y={10}/>
+                <Spacer y={10} />
 
                 {/* Data Table */}
                 <Table
@@ -195,30 +204,34 @@ export function DashboardPage<T extends { id: number; name?: string }>({
                         className: "text-foreground-500",
                         selectionMode: "single",
                         color: "primary",
-                        selectedKeys: selectedId ? new Set([selectedId.toString()]) : new Set(),
+                        selectedKeys: selectedId
+                            ? new Set([selectedId.toString()])
+                            : new Set(),
                         onSelectionChange: (selection: any) => {
                             handleSelectionChange(selection);
                             window.scrollTo(0, 0);
                         },
                     }}
                     tableTopContentProps={{
-                        text: {search: "Search..."},
+                        text: { search: "Search..." },
                     }}
                 />
 
                 {/* Load More Button */}
-                {hasMore && <div className="flex justify-center my-5">
-                    <Button
-                        size="sm"
-                        endContent={<ArrowRightIcon className="size-4"/>}
-                        color="primary"
-                        onPress={pagination.onLoadMore}
-                        disabled={!pagination.hasMore || pagination.loading}
-                        isLoading={pagination.loading}
-                    >
-                        Load More
-                    </Button>
-                </div>}
+                {hasMore && (
+                    <div className="flex justify-center my-5">
+                        <Button
+                            size="sm"
+                            endContent={<ArrowRightIcon className="size-4" />}
+                            color="primary"
+                            onPress={pagination.onLoadMore}
+                            disabled={!pagination.hasMore || pagination.loading}
+                            isLoading={pagination.loading}
+                        >
+                            Load More
+                        </Button>
+                    </div>
+                )}
             </div>
         </SidebarComposed>
     );
