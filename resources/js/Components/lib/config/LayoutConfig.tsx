@@ -17,8 +17,9 @@ export const layoutConfig = {
     navbarLinks: [
         { href: "/", label: "Home" },
         { href: "/movies", label: "Movies" },
-        { href: "/dashboard", label: "Dashboard" },
         { href: "/reservations", label: "Reservations" },
+        { href: "/profile", label: "Profile" },
+        { href: "/dashboard", label: "Dashboard" },
     ],
 
     userDropdownText: {

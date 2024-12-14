@@ -120,7 +120,6 @@ export default function ResetPassword({
                             </div>
                         </form>
                     </CardBody>
-                    <Divider />
                     <CardFooter>
                         <div className="flex items-center w-full justify-end">
                             <Button

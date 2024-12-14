@@ -128,7 +128,6 @@ export default function Login({
                             </div>
                         </form>
                     </CardBody>
-                    <Divider />
                     {status && (
                         <CardFooter>
                             <div className="text-sm font-medium text-green-600">

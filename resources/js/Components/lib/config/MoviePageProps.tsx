@@ -138,10 +138,10 @@ export function generateMoviePageProps(
         orientation: "left",
         bottomContent: (
             <section className="flex flex-col items-start mt-6">
-                <div className={"flex flex-col gap-2"}>
+                <div className={"flex flex-row gap-2"}>
                     <Button
                         color="primary"
-                        size="lg"
+                        size="sm"
                         className="w-fit"
                         isDisabled={!selectedSeat}
                         onPress={() =>
@@ -155,7 +155,7 @@ export function generateMoviePageProps(
                         Reserve your Seat
                     </Button>
                     <Button
-                        size="lg"
+                        size="sm"
                         variant="bordered"
                         isDisabled={!selectedSeat}
                         onPress={() => setSelectedSeat(null)}
@@ -179,7 +179,6 @@ export function generateMoviePageProps(
 
     // Generate props for the BackgroundContainer component
     const backgroundContainerProps: Partial<BackgroundContainerProps> = {
-        background: "/svgs/bg-svg.svg",
         className:
             "h-[calc(100svh-theme(spacing.4))] lg:h-[calc(80svh-theme(spacing.8))]",
     };

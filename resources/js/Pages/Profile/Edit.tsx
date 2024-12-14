@@ -1,43 +1,31 @@
 import AuthenticatedLayout from "@/Components/laravel-defaults/Layouts/AuthenticatedLayout";
 import { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
-import DeleteUserForm from "./Partials/DeleteUserForm";
-import UpdatePasswordForm from "./Partials/UpdatePasswordForm";
-import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm";
+import DeleteUserForm from "./Forms/DeleteUserForm";
+import UpdatePasswordForm from "./Forms/UpdatePasswordForm";
+import UpdateProfileInformationForm from "./Forms/UpdateProfileInformationForm";
+import BackgroundContainer from "@/Components/lib/ui/BackgroundContainer";
+import Layout from "@/Layouts/Layout";
+import { Spacer } from "@nextui-org/react";
 
 export default function Edit({
     mustVerifyEmail,
     status,
 }: PageProps<{ mustVerifyEmail: boolean; status?: string }>) {
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    Profile
-                </h2>
-            }
-        >
+        <Layout className="pt-20 mt-0 pb-0 mb-0">
             <Head title="Profile" />
-
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
-                    <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
-                        <UpdateProfileInformationForm
-                            mustVerifyEmail={mustVerifyEmail}
-                            status={status}
-                            className="max-w-xl"
-                        />
-                    </div>
-
-                    <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
-                        <UpdatePasswordForm className="max-w-xl" />
-                    </div>
-
-                    <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
-                        <DeleteUserForm className="max-w-xl" />
-                    </div>
-                </div>
-            </div>
-        </AuthenticatedLayout>
+            <BackgroundContainer className="min-h-screen">
+                <UpdateProfileInformationForm
+                    mustVerifyEmail={mustVerifyEmail}
+                    status={status}
+                />
+                <Spacer y={10} />
+                <UpdatePasswordForm />
+                <Spacer y={10} />
+                <DeleteUserForm />
+                <Spacer y={10} />
+            </BackgroundContainer>
+        </Layout>
     );
 }

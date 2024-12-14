@@ -74,7 +74,6 @@ export default function ForgotPassword({ status }: { status?: string }) {
                             </div>
                         </form>
                     </CardBody>
-                    <Divider />
                     <CardFooter>
                         <div className="flex items-center w-full justify-end">
                             <Button

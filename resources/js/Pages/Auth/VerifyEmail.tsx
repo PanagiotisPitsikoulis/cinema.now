@@ -51,7 +51,6 @@ export default function VerifyEmail({ status }: { status?: string }) {
                             </div>
                         )}
                     </CardBody>
-                    <Divider />
                     <CardFooter>
                         <form onSubmit={submit} className="flex w-full">
                             <div className="flex items-center justify-between w-full">
