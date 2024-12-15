@@ -53,15 +53,12 @@ export default function Layout({
                         </p>
                     </NavbarBrand>
                 </Link>
-                <NavbarContent
-                    className="hidden sm:flex gap-4"
-                    justify="center"
-                >
+                <NavbarContent className="flex gap-4" justify="center">
                     <NavbarItem className={layoutConfig.navbarThemeSwitchClass}>
                         <ThemeSwitch />
                     </NavbarItem>
                     {layoutConfig.navbarLinks.map((link) => (
-                        <NavbarItem key={link.href}>
+                        <NavbarItem className="hidden sm:flex" key={link.href}>
                             <Link color="foreground" href={link.href}>
                                 {link.label}
                             </Link>
