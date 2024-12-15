@@ -23,10 +23,10 @@ class RedirectIfUnauthenticated
                 'path' => $request->path(),
                 'ip' => $request->ip(),
                 'url' => $request->fullUrl(),
-                'redirect_to' => route('/login'),
+                'redirect_to' => route(name: 'login'),
             ]);
 
-            return redirect()->route('/login');
+            return redirect()->route('login');
         }
 
         return $next($request);
