@@ -17,17 +17,17 @@ class RedirectIfUnauthenticated
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check()) {
-            // Log the redirection
-            Log::info('Redirecting unauthenticated user.', [
-                'path' => $request->path(),
-                'ip' => $request->ip(),
-                'url' => $request->fullUrl(),
-                'redirect_to' => route(name: 'login'),
-            ]);
+        // if (!Auth::check()) {
+        //     // Log the redirection
+        //     Log::info('Redirecting unauthenticated user.', [
+        //         'path' => $request->path(),
+        //         'ip' => $request->ip(),
+        //         'url' => $request->fullUrl(),
+        //         'redirect_to' => route(name: 'login'),
+        //     ]);
 
-            return redirect()->route('login');
-        }
+        //     return redirect()->route('login');
+        // }
 
         return $next($request);
     }
