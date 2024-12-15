@@ -39,7 +39,7 @@ export default function Welcome({
         // Reusable layout component with Navbar and footer.
         <Layout classNames={{ main: "mt-0" }}>
             {/* Page Title */}
-            <Head title="Movies.Now, the best cinema booking platform" />
+            <Head title="The Best Cinema in Town" />
             {/* Hero Section */}
             {/*Hero Component, it is meant to convert new visitors of the page to potential users */}
             <HeroComposed {...heroComposedProps} />
