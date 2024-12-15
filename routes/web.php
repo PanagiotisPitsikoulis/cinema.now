@@ -16,7 +16,7 @@ Route::get('/', function () {
 })->name('home');
 
 // Private Routes (Protected)
-Route::middleware('auth.redirect')->group(function () {
+Route::middleware('verified')->group(function () {
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -35,7 +35,7 @@ Route::middleware('auth.redirect')->group(function () {
 });
 
 // Admin-Only Routes
-Route::prefix('dashboard')->middleware(['auth.redirect', 'verified'])->group(function () {
+Route::prefix('dashboard')->middleware(['verified'])->group(function () {
     Route::get('/', [DashboardController::class, 'home'])->name('dashboard.home');
     Route::get('/movies', [DashboardController::class, 'movies'])->name('dashboard.movies');
     Route::get('/display-times', [DashboardController::class, 'displayTimes'])->name('dashboard.display_times');

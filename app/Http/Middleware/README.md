@@ -34,44 +34,6 @@ This folder contains custom middleware that enhances and extends the functionali
 -   **Use Case**:
     Automatically passes user data or flash messages to your Inertia.js frontend.
 
----
-
-### 2. **`RedirectIfUnauthenticated.php`**
-
--   **Purpose**: Custom middleware to redirect unauthenticated users to the login page.
--   **Key Characteristics**:
-    -   Intercepts requests to protected routes and checks user authentication.
-    -   Redirects unauthenticated users to the login route.
--   **Example Usage**:
-
-    ```php
-    public function handle($request, Closure $next)
-    {
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }
-
-        return $next($request);
-    }
-    ```
-
--   **How it Works**:
-    -   Checks if the user is authenticated using `Auth::check()`.
-    -   If not authenticated, redirects the request to the `login` route.
--   **Use Case**:
-    Ensures only authenticated users can access protected pages like profiles or dashboards.
-
----
-
-### 3. **`README.md`**
-
--   **Purpose**: Documents the middleware functionality in the application.
--   **Key Characteristics**:
-    -   Provides an overview of the middleware files and their responsibilities.
-    -   Describes how middleware integrates with the application routes and request lifecycle.
-
----
-
 ## 🛠️ How Middleware Works in Laravel
 
 1. **Request Lifecycle**:

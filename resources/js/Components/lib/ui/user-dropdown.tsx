@@ -7,6 +7,7 @@ import {
 } from "@nextui-org/react";
 import { User } from "@/types";
 import { getAvatarUrl } from "@/Components/utils";
+import { Link } from "@inertiajs/react";
 
 export type UserDropdownProps = {
     user: User | undefined;
@@ -47,7 +48,7 @@ export function UserDropdown({ text, user, logout }: UserDropdownProps) {
                     <p className="font-semibold">{text.signedInAs}</p>
                     <p className="font-semibold">{user.email}</p>
                 </DropdownItem>
-                <DropdownItem key="dashboard" href="/dashboard">
+                <DropdownItem key="dashboard" as={Link} href="/dashboard">
                     {text.dashboard}
                 </DropdownItem>
                 <DropdownItem key="logout" color="danger" onPress={logout}>
