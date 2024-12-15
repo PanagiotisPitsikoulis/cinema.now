@@ -254,7 +254,7 @@ export function SidebarComposed({
                         classNames.content
                     )}
                 >
-                    <header className="flex py-1 items-center px-4 lg:px-8 border-b border-content2 relative z-50">
+                    <header className="flex py-1 items-center px-4 lg:px-8 border-b border-content2 sticky top-0 left-0 right-0 z-50 bg-background">
                         <div className="h-14 flex items-center justify-between w-full">
                             <SidebarTrigger className="-ml-1">
                                 {toggleSidebar}

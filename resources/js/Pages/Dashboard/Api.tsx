@@ -21,7 +21,7 @@ export default function DashboardAPI(props: PageProps<DashboardApiData>) {
 
     return (
         <SidebarComposed {...sidebarProps}>
-            <div className="px-4 lg:px-8">
+            <div className="px-4 lg:px-8 max-lg:w-[90vw]">
                 {/* Page Title */}
                 <Head title="Dashboard API" />
                 {/* Display the API token */}
