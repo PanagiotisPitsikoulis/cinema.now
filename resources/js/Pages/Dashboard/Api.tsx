@@ -7,7 +7,7 @@ import { generateDashboardApiPageProps } from "@/Components/lib/config/dashboard
 import ReactMarkdown from "react-markdown";
 import apiDocs from "../../../../routes/API.md?raw";
 import dashboardApiDocs from "../../../../routes/DASHBOARD-API.md?raw";
-import { Tab, Tabs } from "@nextui-org/react";
+import { Spacer, Tab, Tabs } from "@nextui-org/react";
 import { Head } from "@inertiajs/react";
 
 /**
@@ -16,37 +16,33 @@ import { Head } from "@inertiajs/react";
  */
 export default function DashboardAPI(props: PageProps<DashboardApiData>) {
     // Generate props for each component
-    const { sidebarProps, landingTextProps, backgroundContainerProps } =
+    const { sidebarProps, landingTextProps } =
         generateDashboardApiPageProps(props);
 
     return (
         <SidebarComposed {...sidebarProps}>
-            {/* Page Title */}
-            <Head title="Dashboard API" />
-            {/* Display the API token */}
-            <BackgroundContainer {...backgroundContainerProps}>
+            <div className="px-4 lg:px-8">
+                {/* Page Title */}
+                <Head title="Dashboard API" />
                 {/* Display the API token */}
                 <LandingText {...landingTextProps} />
-            </BackgroundContainer>
-            {/* Markdown Viewer Docs */}
-            <Tabs aria-label="admin-api-docs" className="p-4 lg:px-8">
-                <Tab key="api-docs" title="Api Docs" className="p-4 lg:px-8">
-                    {/* API */}
-                    <ReactMarkdown className={"prose dark:prose-invert"}>
-                        {apiDocs}
-                    </ReactMarkdown>
-                </Tab>
-                <Tab
-                    key="admin-api-docs"
-                    title="Admin Api Docs"
-                    className="p-4 lg:px-8"
-                >
-                    {/* DashboardAPI */}
-                    <ReactMarkdown className={"prose dark:prose-invert"}>
-                        {dashboardApiDocs}
-                    </ReactMarkdown>
-                </Tab>
-            </Tabs>
+                <Spacer y={10} />
+                {/* Markdown Viewer Docs */}
+                <Tabs aria-label="admin-api-docs" className="">
+                    <Tab key="api-docs" title="Api Docs">
+                        {/* API */}
+                        <ReactMarkdown className={"prose dark:prose-invert"}>
+                            {apiDocs}
+                        </ReactMarkdown>
+                    </Tab>
+                    <Tab key="admin-api-docs" title="Admin Api Docs">
+                        {/* DashboardAPI */}
+                        <ReactMarkdown className={"prose dark:prose-invert"}>
+                            {dashboardApiDocs}
+                        </ReactMarkdown>
+                    </Tab>
+                </Tabs>
+            </div>
         </SidebarComposed>
     );
 }

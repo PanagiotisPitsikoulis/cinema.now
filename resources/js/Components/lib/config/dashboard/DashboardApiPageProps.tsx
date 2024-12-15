@@ -14,7 +14,6 @@ import { toast } from "sonner";
 export type DashboardApiProps = {
     sidebarProps: DashboardSidebarConfig;
     landingTextProps: LandingTextProps;
-    backgroundContainerProps: Partial<BackgroundContainerProps>;
 };
 
 /**
@@ -96,13 +95,8 @@ export function generateDashboardApiPageProps({
         ),
     };
 
-    const backgroundContainerProps = {
-        className: "p-4 lg:px-8 pb-10 min-h-[80svh]",
-    };
-
     return {
         sidebarProps,
         landingTextProps,
-        backgroundContainerProps,
     };
 }
