@@ -301,7 +301,7 @@ const SidebarTrigger = React.forwardRef<
             isIconOnly={!props.children}
             size={"sm"}
             className={cn(className)}
-            onClick={(event) => {
+            onPress={(event) => {
                 onClick?.(event);
                 toggleSidebar();
             }}

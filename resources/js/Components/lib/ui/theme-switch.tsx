@@ -18,7 +18,7 @@ export const ThemeSwitch = () => {
             variant="light"
             size={"sm"}
             isIconOnly={true}
-            onClick={toggleTheme}
+            onPress={toggleTheme}
         >
             {theme === "dark" ? (
                 <Sun className="w-4 h-4" />
