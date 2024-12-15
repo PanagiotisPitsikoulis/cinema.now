@@ -8,6 +8,7 @@ import { LandingSection } from "@/Components/lib/ui/landing/LandingSection";
 import { Spacer } from "@nextui-org/react";
 import { generateMoviesPageProps } from "@/Components/lib/config/MoviesPageProps";
 import { handleFetchMoreMovies } from "@/Components/lib/api/movie";
+import { Head } from "@inertiajs/react";
 
 /**
  * Display a list of movies along with a featured carousel and a grid of movies.
@@ -59,6 +60,8 @@ export default function Movies({
     return (
         // Reusable layout component with Navbar and footer.
         <Layout>
+            {/* Page Title */}
+            <Head title="Choose from thousands of movies" />
             {/* Featured Movie Section */}
             <LandingSection {...featuredSectionProps} />
             {/* Spacer component, it is meant to add some spacing between sections */}

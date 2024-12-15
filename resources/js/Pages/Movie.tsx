@@ -7,6 +7,7 @@ import { LandingSection } from "@/Components/lib/ui/landing/LandingSection";
 import { Spacer } from "@nextui-org/react";
 import { LandingText } from "@/Components/lib/ui/landing/LandingText";
 import BackgroundContainer from "@/Components/lib/ui/BackgroundContainer";
+import { Head } from "@inertiajs/react";
 
 /**
  * Display a movie along with its display times and reservations.
@@ -52,6 +53,8 @@ export default function Movie({
     return (
         // Reusable layout component with Navbar and footer.
         <Layout>
+            {/* Page Title */}
+            <Head title={`Book a Seat for "${movie.name}"`} />
             {/* Main Section */}
             {/*Landing Section Component, it is meant to showcase the main feature of the page */}
             <LandingSection {...heroSectionProps} />

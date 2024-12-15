@@ -1,4 +1,3 @@
-import AuthenticatedLayout from "@/Components/laravel-defaults/Layouts/AuthenticatedLayout";
 import { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 import DeleteUserForm from "./Forms/DeleteUserForm";
@@ -14,6 +13,8 @@ export default function Edit({
 }: PageProps<{ mustVerifyEmail: boolean; status?: string }>) {
     return (
         <Layout className="pt-20 mt-0 pb-0 mb-0">
+            {/* Page Title */}
+            <Head title="Edit your profile" />
             <Head title="Profile" />
             <BackgroundContainer className="min-h-screen">
                 <UpdateProfileInformationForm

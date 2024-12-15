@@ -9,6 +9,7 @@ import { LandingSection } from "@/Components/lib/ui/landing/LandingSection";
 import { HeroComposed } from "@/Components/lib/composed/HeroComposed";
 import { CTAComposed } from "@/Components/lib/composed/CTAComposed";
 import { generateWelcomePageComponentProps } from "@/Components/lib/config/WelcomePageProps";
+import { Head } from "@inertiajs/react";
 
 /**
  * Welcome page for the application. This page is the first page that users see when they visit the website.
@@ -37,6 +38,8 @@ export default function Welcome({
     return (
         // Reusable layout component with Navbar and footer.
         <Layout classNames={{ main: "mt-0" }}>
+            {/* Page Title */}
+            <Head title="Movies.Now, the best cinema booking platform" />
             {/* Hero Section */}
             {/*Hero Component, it is meant to convert new visitors of the page to potential users */}
             <HeroComposed {...heroComposedProps} />

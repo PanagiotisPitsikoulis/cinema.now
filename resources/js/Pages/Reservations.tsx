@@ -1,5 +1,5 @@
 import React from "react";
-import { router, usePage } from "@inertiajs/react";
+import { Head, router, usePage } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import Layout from "@/Layouts/Layout";
 import { ExtendedReservation } from "@/types/types";
@@ -39,6 +39,8 @@ function Reservations() {
     return (
         // Reusable layout component with Navbar and footer.
         <Layout>
+            {/* Page Title */}
+            <Head title="Your Active Movie Reservations" />
             <section>
                 {/* Section Title */}
                 <LandingText {...landingTextProps} />

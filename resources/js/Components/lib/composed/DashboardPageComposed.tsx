@@ -7,6 +7,7 @@ import { Button, Spacer } from "@nextui-org/react";
 import { ArrowRightIcon, TrashIcon } from "lucide-react";
 import { PageProps, User } from "@/types";
 import { generateSidebarConfig } from "@/Components/lib/config/dashboard/DashboardSidebarConfig";
+import { Head } from "@inertiajs/react";
 
 export type FieldSchema<T> = {
     label: string;
@@ -116,6 +117,8 @@ export function DashboardPage<T extends { id: number; name?: string }>({
 
     return (
         <SidebarComposed {...sidebarProps}>
+            {/* Page Title */}
+            <Head title={"Dashboard " + text.createTitle + " Page"} />
             <div className="p-4 lg:px-8">
                 {/* Create Form Section */}
                 <LandingText

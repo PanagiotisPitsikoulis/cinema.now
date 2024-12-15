@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 import apiDocs from "../../../../routes/API.md?raw";
 import dashboardApiDocs from "../../../../routes/DASHBOARD-API.md?raw";
 import { Tab, Tabs } from "@nextui-org/react";
+import { Head } from "@inertiajs/react";
 
 /**
  * Dashboard API page. Displays the API token and allows for copying and toggling.
@@ -20,6 +21,8 @@ export default function DashboardAPI(props: PageProps<DashboardApiData>) {
 
     return (
         <SidebarComposed {...sidebarProps}>
+            {/* Page Title */}
+            <Head title="Dashboard API" />
             {/* Display the API token */}
             <BackgroundContainer {...backgroundContainerProps}>
                 {/* Display the API token */}
