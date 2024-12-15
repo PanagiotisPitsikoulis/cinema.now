@@ -1,11 +1,18 @@
 import React from "react";
-import {LandingText, LandingTextProps} from "@/Components/lib/ui/landing/LandingText";
-import {cva, VariantProps} from "class-variance-authority";
-import {cn} from "@/Components/utils";
-import {useIsMobile} from "@/Components/hooks/use-mobile";
-import {AnimatedWrapper, AnimatedWrapperProps} from "@/Components/lib/ui/AnimatedWrapper";
+import {
+    LandingText,
+    LandingTextProps,
+} from "@/Components/lib/ui/landing/LandingText";
+import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "@/Components/utils";
+import { useIsMobile } from "@/Components/hooks/use-mobile";
+import {
+    AnimatedWrapper,
+    AnimatedWrapperProps,
+} from "@/Components/lib/ui/AnimatedWrapper";
 
-export interface LandingSectionProps extends VariantProps<typeof landingSectionStyles> {
+export interface LandingSectionProps
+    extends VariantProps<typeof landingSectionStyles> {
     landingTextProps: LandingTextProps;
     content?: React.ReactNode;
     contentBottom?: boolean;
@@ -19,7 +26,7 @@ export interface LandingSectionProps extends VariantProps<typeof landingSectionS
         animatedWrapperPropsContainer?: Partial<AnimatedWrapperProps>;
         animatedWrapperPropsText?: Partial<AnimatedWrapperProps>;
         animatedWrapperPropsContent?: Partial<AnimatedWrapperProps>;
-    }
+    };
 }
 
 const landingSectionStyles = cva("max-lg:py-5 py-20", {
@@ -60,14 +67,14 @@ const contentAlignmentStyles = cva("", {
  * @returns JSX.Element
  */
 export const LandingSection: React.FC<LandingSectionProps> = ({
-                                                                  orientation,
-                                                                  className,
-                                                                  classNames = {},
-                                                                  landingTextProps,
-                                                                  content,
-                                                                  contentBottom = false,
-                                                                  animatedWrapperProps,
-                                                              }) => {
+    orientation,
+    className,
+    classNames = {},
+    landingTextProps,
+    content,
+    contentBottom = false,
+    animatedWrapperProps,
+}) => {
     const isMobile = useIsMobile();
     const renderContentBottom = isMobile || contentBottom;
 
@@ -75,16 +82,28 @@ export const LandingSection: React.FC<LandingSectionProps> = ({
         <AnimatedWrapper
             {...animatedWrapperProps?.animatedWrapperPropsContainer}
             className={cn(
-                landingSectionStyles({orientation}),
+                landingSectionStyles({ orientation }),
                 "flex overflow-hidden",
-                renderContentBottom ? "flex-col items-start" : contentAlignmentStyles({orientation}),
+                renderContentBottom
+                    ? "flex-col items-start"
+                    : contentAlignmentStyles({ orientation }),
                 classNames.container,
                 className
             )}
         >
-            <AnimatedWrapper {...animatedWrapperProps?.animatedWrapperPropsText}>
-                <LandingText {...landingTextProps}
-                             orientation={isMobile ? orientation === "right" ? "left" : orientation : orientation}/>
+            <AnimatedWrapper
+                {...animatedWrapperProps?.animatedWrapperPropsText}
+            >
+                <LandingText
+                    {...landingTextProps}
+                    orientation={
+                        isMobile
+                            ? orientation === "right"
+                                ? "left"
+                                : orientation
+                            : orientation
+                    }
+                />
             </AnimatedWrapper>
             {content && (
                 <AnimatedWrapper

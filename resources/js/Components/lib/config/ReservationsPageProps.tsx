@@ -3,10 +3,9 @@ import { getStatusColor } from "@/Components/lib/config/config";
 import { Button, ButtonGroup, Chip } from "@nextui-org/react";
 import { Trash } from "lucide-react";
 import { LinkIcon } from "@nextui-org/shared-icons";
-//@ts-ignore
-import { TableProps } from "@/Components/lib/ui/table";
 import { LandingTextProps } from "@/Components/lib/ui/landing/LandingText";
 import { Key } from "react";
+import { TableProps } from "../ui/data-table";
 
 export type ReservationsPageProps = {
     landingTextProps: LandingTextProps;

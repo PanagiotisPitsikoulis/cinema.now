@@ -1,6 +1,6 @@
 import React from "react";
-import {motion} from "framer-motion";
-import {useOnScreen} from "@/Components/hooks/use-on-screen";
+import { motion } from "framer-motion";
+import { useOnScreen } from "@/Components/hooks/use-on-screen";
 
 export type AnimatedWrapperProps = {
     children: React.ReactNode;
@@ -37,21 +37,21 @@ export type AnimatedWrapperProps = {
  * @param className - Additional class name for the wrapper. Deprecated, use rootMargin and threshold instead.
  */
 export function AnimatedWrapper({
-                                    children,
-                                    left,
-                                    right,
-                                    top,
-                                    bottom,
-                                    opacity = 1,
-                                    duration = 0.4,
-                                    delay = 0,
-                                    ease = "easeOut",
-                                    initialOpacity = 0,
-                                    className,
-                                    triggerOnView = false,
-                                    rootMargin = "0px",
-                                    threshold = 0.5,
-                                }: AnimatedWrapperProps) {
+    children,
+    left,
+    right,
+    top,
+    bottom,
+    opacity = 1,
+    duration = 0.4,
+    delay = 0,
+    ease = "easeOut",
+    initialOpacity = 0,
+    className,
+    triggerOnView = false,
+    rootMargin = "0px",
+    threshold = 0.5,
+}: AnimatedWrapperProps) {
     const [ref, isVisible] = useOnScreen<HTMLDivElement>({
         rootMargin,
         threshold,
@@ -73,7 +73,9 @@ export function AnimatedWrapper({
         <motion.div
             ref={triggerOnView ? ref : null}
             initial={initialPosition}
-            animate={triggerOnView && !isVisible ? initialPosition : animatePosition}
+            animate={
+                triggerOnView && !isVisible ? initialPosition : animatePosition
+            }
             transition={{
                 duration,
                 delay,

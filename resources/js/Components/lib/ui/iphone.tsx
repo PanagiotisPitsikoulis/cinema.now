@@ -1,4 +1,4 @@
-import {SVGProps} from "react";
+import { SVGProps } from "react";
 
 export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
     width?: number;
@@ -14,11 +14,11 @@ export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
  * @returns JSX.Element
  */
 export function Iphone({
-                           width = 433,
-                           height = 882,
-                           src,
-                           ...props
-                       }: Iphone15ProProps) {
+    width = 433,
+    height = 882,
+    src,
+    ...props
+}: Iphone15ProProps) {
     return (
         <svg
             width={width}

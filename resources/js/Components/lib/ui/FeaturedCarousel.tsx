@@ -1,4 +1,4 @@
-import {Button} from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import {
     Carousel,
     CarouselApi,
@@ -8,11 +8,10 @@ import {
     CarouselPrevious,
 } from "@/Components/lib/ui/carousel";
 import React from "react";
-import {cn} from "@/Components/utils";
-import {ButtonProps} from "@nextui-org/button";
-import {Link} from "@inertiajs/react";
-import {LandingText} from "@/Components/lib/ui/landing/LandingText";
-
+import { cn } from "@/Components/utils";
+import { ButtonProps } from "@nextui-org/button";
+import { Link } from "@inertiajs/react";
+import { LandingText } from "@/Components/lib/ui/landing/LandingText";
 
 export type Item = {
     id: number;
@@ -37,7 +36,13 @@ export type FeaturedCarouselProps = {
  * @param buttonProps - Props for the button.
  * @param link - Props for the link. Can be used to add a prefix or suffix to the item's id, or override it by passing a custom href. Don't add slashes to the prefix or suffix, they will be added automatically.
  */
-export function FeaturedCarousel({items, buttonProps, link}: FeaturedCarouselProps) {
+export function FeaturedCarousel({
+    items,
+    buttonProps,
+    link,
+}: FeaturedCarouselProps) {
+    if (!items || items.length === 0) return null;
+
     const [api, setApi] = React.useState<CarouselApi>();
     const [current, setCurrent] = React.useState(0);
     const [count, setCount] = React.useState(0);
@@ -67,9 +72,7 @@ export function FeaturedCarousel({items, buttonProps, link}: FeaturedCarouselPro
         <section>
             <div className="flex flex-col-reverse lg:flex-row gap-4">
                 {/* Text Section */}
-                <section
-                    className="relative rounded-xl w-full p-8 flex items-center justify-center md:p-12 lg:px-16 lg:py-24"
-                >
+                <section className="relative rounded-xl w-full p-8 flex items-center justify-center md:p-12 lg:px-16 lg:py-24">
                     {/*Image background*/}
                     <img
                         alt={currentItem.name}
@@ -77,9 +80,7 @@ export function FeaturedCarousel({items, buttonProps, link}: FeaturedCarouselPro
                         className="h-full w-full object-cover absolute top-0 left-0 right-0 bottom-0 inset-0 z-0 rounded-xl overflow-clip"
                     />
                     {/*Dark overlay*/}
-                    <div
-                        className="h-full w-full object-cover absolute top-0 left-0 right-0 bottom-0 inset-0 z-10 bg-black/40 backdrop-blur-3xl rounded-xl overflow-clip"
-                    />
+                    <div className="h-full w-full object-cover absolute top-0 left-0 right-0 bottom-0 inset-0 z-10 bg-black/40 backdrop-blur-3xl rounded-xl overflow-clip" />
                     <div className="mx-auto max-w-xl z-20">
                         <LandingText
                             bottomContent={
@@ -97,23 +98,32 @@ export function FeaturedCarousel({items, buttonProps, link}: FeaturedCarouselPro
                                     {/* Dots only for multiple items */}
                                     {items.length > 1 && (
                                         <div className="flex flex-row gap-1 mb-4">
-                                            {Array.from({length: count}).map((_, index) => (
-                                                <span
-                                                    key={index}
-                                                    className={cn(
-                                                        "bg-white/50 size-2 rounded-full",
-                                                        index === current && "bg-white"
-                                                    )}
-                                                ></span>
-                                            ))}
+                                            {Array.from({ length: count }).map(
+                                                (_, index) => (
+                                                    <span
+                                                        key={index}
+                                                        className={cn(
+                                                            "bg-white/50 size-2 rounded-full",
+                                                            index === current &&
+                                                                "bg-white"
+                                                        )}
+                                                    ></span>
+                                                )
+                                            )}
                                         </div>
-                                    )}</>
+                                    )}
+                                </>
                             }
                             orientation={"left"}
                             size={"sm"}
-                            classNames={{title: "text-white", subtitle: "text-white/80"}}
+                            classNames={{
+                                title: "text-white",
+                                subtitle: "text-white/80",
+                            }}
                             title={currentItem.name}
-                            subtitle={currentItem.description.slice(0, 80) + "..."}
+                            subtitle={
+                                currentItem.description.slice(0, 80) + "..."
+                            }
                         />
                     </div>
                 </section>
@@ -134,8 +144,8 @@ export function FeaturedCarousel({items, buttonProps, link}: FeaturedCarouselPro
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious/>
-                        <CarouselNext/>
+                        <CarouselPrevious />
+                        <CarouselNext />
                     </Carousel>
                 ) : (
                     <div className="w-full lg:max-w-sm">

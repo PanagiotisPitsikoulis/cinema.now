@@ -8,8 +8,8 @@ import {
     CardFooter,
     Divider,
 } from "@nextui-org/react";
-import InputLabel from "@/Components/laravel-defaults/InputLabel";
-import InputError from "@/Components/laravel-defaults/InputError";
+import InputLabel from "@/Components/lib/ui/InputLabel";
+import InputError from "@/Components/lib/ui/InputError";
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,

@@ -35,6 +35,7 @@
         "@radix-ui/react-aspect-ratio": "^1.1.0",
         "@radix-ui/react-dialog": "^1.1.2",
         "@radix-ui/react-slot": "^1.1.0",
+        "@tailwindcss/typography": "^0.5.15",
         "class-variance-authority": "^0.7.1",
         "embla-carousel-react": "^8.5.1",
         "framer-motion": "^11.13.1",
@@ -42,9 +43,12 @@
         "mitt": "^3.0.1",
         "motion": "12.0.0-alpha.2",
         "react-hook-form": "^7.54.0",
+        "react-markdown": "^9.0.1",
         "recharts": "^2.14.1",
+        "rehype-raw": "^7.0.0",
         "sonner": "^1.7.1",
-        "tailwindcss-animate": "^1.0.7"
+        "tailwindcss-animate": "^1.0.7",
+        "vite-plugin-md": "^0.21.5"
     },
     "overrides": {
         "react-is": "^19.0.0-rc-69d4b800-20241021"

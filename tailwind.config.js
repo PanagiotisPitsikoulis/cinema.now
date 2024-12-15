@@ -1,6 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 
-const {nextui} = require("@nextui-org/react");
+const { nextui } = require("@nextui-org/react");
 const animate = require("tailwindcss-animate");
 
 /** @type {import('tailwindcss').Config} */
@@ -22,6 +22,7 @@ export default {
     },
     darkMode: "class",
     plugins: [
+        require('@tailwindcss/typography'),
         animate,
         nextui()
     ],

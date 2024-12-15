@@ -13,8 +13,8 @@ import {
     ModalBody,
     ModalFooter,
 } from "@nextui-org/react";
-import InputError from "@/Components/laravel-defaults/InputError";
-import InputLabel from "@/Components/laravel-defaults/InputLabel";
+import InputError from "@/Components/lib/ui/InputError";
+import InputLabel from "@/Components/lib/ui/InputLabel";
 
 export default function DeleteUserForm() {
     const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);

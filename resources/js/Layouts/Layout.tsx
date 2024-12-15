@@ -6,7 +6,7 @@ import {
     NavbarContent,
     NavbarItem,
 } from "@nextui-org/react";
-import ApplicationLogo from "@/Components/laravel-defaults/ApplicationLogo";
+import ApplicationLogo from "@/Components/app/ApplicationLogo";
 import { Footer } from "@/Components/lib/ui/footer";
 import { Link, usePage } from "@inertiajs/react";
 import { UserDropdown } from "@/Components/lib/ui/user-dropdown";

@@ -1,5 +1,5 @@
-import InputError from "@/Components/laravel-defaults/InputError";
-import InputLabel from "@/Components/laravel-defaults/InputLabel";
+import InputError from "@/Components/lib/ui/InputError";
+import InputLabel from "@/Components/lib/ui/InputLabel";
 import { Head, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
 import Layout from "@/Layouts/Layout";
