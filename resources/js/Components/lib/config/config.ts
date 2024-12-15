@@ -1,11 +1,11 @@
 export function getStatusColor(status: string) {
     switch (status) {
-        case "empty":
-            return "default";
+        case "cancelled":
+            return "danger";
         case "pending":
             return "warning";
-        case "booked":
-            return "danger";
+        case "confirmed":
+            return "success";
         default:
             return "default";
     }

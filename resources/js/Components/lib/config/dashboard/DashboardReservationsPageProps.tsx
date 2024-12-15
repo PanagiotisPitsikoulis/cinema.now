@@ -12,6 +12,9 @@ import {
     fetchReservations,
 } from "@/Components/lib/api/dashboard/reservation";
 import { useDashboardPage } from "@/Components/hooks/use-dashboard-page";
+import { Avatar, Chip } from "@nextui-org/react";
+import { getStatusColor } from "../config";
+import { getAvatarUrl } from "@/Components/utils";
 
 /**
  * Generate props for the DashboardReservationsPage component.
@@ -39,32 +42,66 @@ export function generateDashboardReservationsPageProps({
         fetchItems: fetchReservations,
     });
 
+    console.log(reservations);
+
     // Reservation table columns
     const reservationColumns = useMemo(
         () => [
             { key: "id", label: "ID" },
             { key: "user_name", label: "User Name" },
             { key: "room_order", label: "Room Order" },
+            { key: "status", label: "Status" },
+            { key: "movie_name", label: "Movie Name" },
+            { key: "display_time", label: "Display Time" },
         ],
         []
     );
 
     // Render cell logic
-    const renderCell = useCallback(
-        (reservation: Reservation, columnKey: Key) => {
-            switch (columnKey) {
-                case "id":
-                    return reservation.id;
-                case "user_name":
-                    return <div>{reservation.user_id}</div>;
-                case "room_order":
-                    return <div>{reservation.room_order}</div>;
-                default:
-                    return null;
-            }
-        },
-        []
-    );
+    const renderCell = useCallback((reservation: any, columnKey: Key) => {
+        switch (columnKey) {
+            case "id":
+                return reservation.id;
+            case "user_name":
+                return <div>{reservation.user?.name || "N/A"}</div>;
+            case "room_order":
+                return <div>{reservation.room_order}</div>;
+            case "status":
+                return (
+                    <Chip
+                        size={"sm"}
+                        variant={"flat"}
+                        className={`capitalize`}
+                        color={getStatusColor(reservation.status)}
+                    >
+                        {reservation.status}
+                    </Chip>
+                );
+            case "user":
+                return reservation.user_id ? (
+                    <Avatar
+                        size="sm"
+                        src={getAvatarUrl(reservation.user_id.toString())}
+                        alt={`User ${reservation.user_id}`}
+                    />
+                ) : (
+                    "N/A"
+                );
+            case "movie_name":
+                return (
+                    <div>{reservation.display_time?.movie?.name || "N/A"}</div>
+                );
+            case "display_time":
+                return (
+                    <div>
+                        {reservation.display_time?.time_start} -{" "}
+                        {reservation.display_time?.time_end}
+                    </div>
+                );
+            default:
+                return null;
+        }
+    }, []);
 
     // Props sections
     const text = {
@@ -79,15 +116,21 @@ export function generateDashboardReservationsPageProps({
         schema: {
             fields: [
                 {
-                    label: "User Name",
-                    name: "user_name" as keyof Reservation,
+                    label: "Movie ID",
+                    name: "movie_id" as keyof Reservation,
                     type: "text",
                     required: true,
                 },
                 {
-                    label: "Reserved Date",
+                    label: "Room Order",
                     name: "room_order" as keyof Reservation,
-                    type: "date",
+                    type: "text",
+                    required: true,
+                },
+                {
+                    label: "Status",
+                    name: "status" as keyof Reservation,
+                    type: "text",
                     required: true,
                 },
             ],
@@ -110,15 +153,15 @@ export function generateDashboardReservationsPageProps({
         schema: {
             fields: [
                 {
-                    label: "User Name",
-                    name: "user_name" as keyof Reservation,
+                    label: "Room Order",
+                    name: "room_order" as keyof Reservation,
                     type: "text",
                     required: true,
                 },
                 {
-                    label: "Reserved Date",
-                    name: "room_order" as keyof Reservation,
-                    type: "date",
+                    label: "Status",
+                    name: "status" as keyof Reservation,
+                    type: "text",
                     required: true,
                 },
             ],

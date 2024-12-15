@@ -125,18 +125,23 @@ class DashboardController extends Controller
         ]);
     }
 
-    // API page
+    // API page (Admin only)
     public function api(Request $request): Response
     {
-        // Extract the Bearer token from the Authorization header
-        $authHeader = $request->header('Authorization');
-        $token = $authHeader ? str_replace('Bearer ', '', $authHeader) : null;
+        // Retrieve or generate a token for the user from the session
+        $token = $request->session()->get('api_token', function () use ($request) {
+            $generatedToken = hash('sha256', $request->user()->id . now());
+            $request->session()->put('api_token', $generatedToken);
+            return $generatedToken;
+        });
 
         return Inertia::render('Dashboard/Api', [
             'api_token' => $token,
             'user' => $request->user(),
         ]);
     }
+
+
 
     /**
      * Admin only API routes
